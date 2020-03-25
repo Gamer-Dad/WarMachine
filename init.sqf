@@ -24,7 +24,8 @@ factionW = "NATO"; //name of the faction
 factionE = "CSAT"; //name of the faction
 flgW = "Flag_NATO_F"; //flag asset name  ("Flag_AAF_F")
 flgE = "Flag_CSAT_F"; //flag asset name
-
+supplyW = ["B_supplyCrate_F","B_CargoNet_01_ammo_F"]; //supplyBox ["I_supplyCrate_F","I_CargoNet_01_ammo_F"]
+supplyE = ["O_supplyCrate_F","O_CargoNet_01_ammo_F"];
 //OBJECT POOLS-------------------------------------------------------------------------------------------------EDITABLE//
 strAlpha = ["O_Truck_03_device_F","Land_Device_disassembled_F","Land_Device_assembled_F","B_UAV_02_F","O_UAV_02_F","B_UAV_05_F","B_T_UAV_03_F","O_T_UAV_04_CAS_F"]; //"I_UAV_02_F"
 strBravo = ["Land_Wreck_Heli_Attack_01_F","Land_Wreck_Slammer_F","Land_Wreck_Hunter_F","Land_Wreck_Heli_Attack_02_F","Land_UWreck_MV22_F","Land_Wreck_LT_01_F","Land_Wreck_MBT_04_F","Land_Wreck_AFV_Wheeled_01_F"];

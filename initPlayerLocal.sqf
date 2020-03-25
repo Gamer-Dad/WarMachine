@@ -2,11 +2,15 @@
 waitUntil {!isNull player}; //JIP
 //variables setup
 lUpdate = 0;
+suppUsed=0;
 boatArUsed=0;
 boatTrUsed=0;
 carUsed=0;
 truckUsed=0;
-fort1 = 0; fort2 = 0; fort3 = 0;
+fort1 = 0;
+fort2 = 0;
+fort3 = 0;
+
 //add all unit traits to every player
 _trait = ["medic", "engineer", "explosiveSpecialist", "UAVHacker"];
 {player setUnitTrait [_x, true];} forEach _trait;

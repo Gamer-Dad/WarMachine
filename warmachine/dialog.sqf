@@ -217,7 +217,7 @@ if (dSel == 0) then
 		else{_cmb61 lbSetCurSel 1;_vi="<br/>3rd person view available only in the vehicle";};
 	}else{_cmb61 lbSetCurSel 0;};
 
-	_cmb11 lbSetCurSel 1; //Mission type
+	_cmb11 lbSetCurSel 2; //Mission type
 	_cmb12 lbSetCurSel 0; //Time of day
 	_cmb21 lbSetCurSel 2; //Number of sectors
 	_cmb22 lbSetCurSel 0; //Weather
@@ -234,7 +234,7 @@ if (dSel == 0) then
 	_cmb82 lbSetCurSel 2; //Vehicles respawn time
 
 	//Hint
-	_text = ["Players: ",_plrNoW," vs. ",_plrNoE,"<br/>Squads: ",_grpNoW," vs. ",_grpNoE,"<br/><br/>RECOMMENDED PARAMETERS<br/>","Mission type: ","Combined ground forces<br/>Number of sectors: 3","<br/>Autonomous AI enabled",_vi,"<br/><br/>Zeus is available for administrator<br/>and server host"] joinString "";
+	_text = ["Players: ",_plrNoW," vs. ",_plrNoE,"<br/>Squads: ",_grpNoW," vs. ",_grpNoE,"<br/><br/>RECOMMENDED PARAMETERS<br/>","Mission type: ","Full spectrum warfare<br/>Number of sectors: 3","<br/>Autonomous AI enabled",_vi,"<br/><br/>Zeus is available for administrator<br/>and server host"] joinString "";
 	hint parseText format ["%1", _text];
 };
 

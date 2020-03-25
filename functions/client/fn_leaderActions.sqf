@@ -20,11 +20,12 @@
 */
 
 if (!hasInterface) exitWith {}; //run on all players include server host
+
 divE=[]; divW=""; divM="";
 call
 {
-if (side player == sideW) exitWith {SupReq = SupReqW; boatTr = boatTrW; boatAr = boatArW; divE=divEw; divW=divWw; divM=divMw; car=CarW; truck=TruckW;};
-If (side player == sideE) exitWith {SupReq = SupReqE; boatTr = boatTrE; boatAr = boatArE; divE=divEe; divW=divWe; divM=divMe; car=CarE; truck=TruckE;};
+	if (side player == sideW) exitWith {SupReq = SupReqW;};
+	If (side player == sideE) exitWith {SupReq = SupReqE;};
 };
 
 //player IS leader
@@ -57,8 +58,32 @@ if (leader player == player) then
 		];		
 	
 		if(progress>1)then
-		{
-		
+		{			
+			if(airDrop==0)then
+			{
+				if (suppUsed==0||carUsed==0||truckUsed==0||boatArUsed==0||boatTrUsed==0) then
+				{
+					dropAction = player addAction 
+					[
+						"Air drop", //title
+						{
+							[] call wrm_fnc_airDrop;
+							player removeAction dropAction;
+							airDrop=1;
+						}, //script
+						nil, //arguments (Optional)
+						0.8, //priority (Optional)
+						false, //showWindow (Optional)
+						false, //hideOnUse (Optional)
+						"", //shortcut, (Optional) 
+						"", //condition,  (Optional)
+						0, //radius, (Optional) -1disable, 15max
+						false, //unconscious, (Optional)
+						"" //selection]; (Optional)
+					]; 
+				};
+			};
+			
 			if(fort==0)then
 			{
 				if (fort1==0||fort2==0||fort3==0) then
@@ -72,7 +97,7 @@ if (leader player == player) then
 							fort=1;
 						}, //script
 						nil, //arguments (Optional)
-						0.5, //priority (Optional)
+						0.3, //priority (Optional)
 						false, //showWindow (Optional)
 						false, //hideOnUse (Optional)
 						"", //shortcut, (Optional) 
@@ -82,119 +107,7 @@ if (leader player == player) then
 						"" //selection]; (Optional)
 					]; 
 				};
-			};
-
-			if (carUsed==0) then
-			{
-				carAction = player addAction 
-				[
-					"Car airdrop", //title
-					{
-						_posB = [(player getRelPos [25,0]), 0, 25, 0, 0, 0, 0] call BIS_fnc_findSafePos;
-						_car = createVehicle [selectRandom car, [_posB select 0, _posB select 1, 60], [], 0, "NONE"];
-						[objNull, _car] call BIS_fnc_curatorObjectEdited;
-						_car setDir (getPos player getDir _posB);
-						[z1,[[_car],true]] remoteExec ["addCuratorEditableObjects", 2, false];
-						carUsed = 1;
-						player removeAction carAction;
-					}, 
-					nil, 0.4, false, true, "", "", -1, false, "" //arguments, priority, showWindow, hideOnUse, shortcut, condition, radius, unconscious, selection
-				]; 
-			};
-
-			if (truckUsed==0) then
-			{
-				truckAction = player addAction 
-				[
-					"Truck airdrop", //title
-					{
-						_posB = [(player getRelPos [25,0]), 0, 25, 0, 0, 0, 0] call BIS_fnc_findSafePos;
-						_car = createVehicle [selectRandom truck, [_posB select 0, _posB select 1, 60], [], 0, "NONE"];
-						[objNull, _car] call BIS_fnc_curatorObjectEdited;
-						_car setDir (getPos player getDir _posB);
-						[z1,[[_car],true]] remoteExec ["addCuratorEditableObjects", 2, false];
-						truckUsed = 1;
-						player removeAction truckAction;
-					}, 
-					nil, 0.3, false, true, "", "", -1, false, "" //arguments, priority, showWindow, hideOnUse, shortcut, condition, radius, unconscious, selection
-				]; 
-			};
-
-			if (boatArUsed==0 && boatsAr==1) then
-			{
-				BoatArAction = player addAction 
-				[
-					"Patrol boat airdrop", //title
-					{
-						_overShore = !(position player isFlatEmpty  [-1, -1, -1, -1, 0, true] isEqualTo []);
-						_overWater = !(position player isFlatEmpty  [-1, -1, -1, -1, 2, false] isEqualTo []);
-						if (_overShore || _overWater) then
-						{
-							_posB = [player, 20, 35, 0, 2, 0, 0] call BIS_fnc_findSafePos;
-							_boat = createVehicle [selectRandom boatAr, [_posB select 0, _posB select 1, 60], [], 0, "NONE"];
-							[objNull, _boat] call BIS_fnc_curatorObjectEdited;
-							_boat setDir (getPos player getDir _posB);
-							[z1,[[_boat],true]] remoteExec ["addCuratorEditableObjects", 2, false];
-							if(diverG==1)then
-							{
-								clearItemCargo _boat;
-								_boat addItemCargoGlobal ["FirstAidKit", 2];
-								{_boat addItemCargoGlobal [_x, 1];} forEach divE; //add diving gear to cargo
-								_boat addWeaponCargoGlobal [divW, 1];
-								_boat addMagazineCargoGlobal [divM, 3];
-							};
-							//[_boat] remoteExec ["wrm_fnc_pushBoat", 0, true];
-							boatArUsed = 1;
-							player removeAction BoatArAction;
-						} else 
-						{
-							hint "You are too far from the water";
-						};
-					}, 
-					nil, 0.2, false, true, "", "", -1, false, "" //arguments, priority, showWindow, hideOnUse, shortcut, condition, radius, unconscious, selection
-				]; 
-			};
-
-			if (boatTrUsed == 0) then
-			{
-				BoatTrAction = player addAction 
-				[
-					"Boat airdrop", //title
-					{
-						_overShore = !(position player isFlatEmpty  [-1, -1, -1, -1, 0, true] isEqualTo []);
-						_overWater = !(position player isFlatEmpty  [-1, -1, -1, -1, 2, false] isEqualTo []);
-						if (_overShore || _overWater) then
-						{
-							_posB = [player, 20, 35, 0, 2, 0, 0] call BIS_fnc_findSafePos;
-							_boat = createVehicle [selectRandom boatTr, [_posB select 0, _posB select 1, 60], [], 0, "NONE"]; //create boat
-							[objNull, _boat] call BIS_fnc_curatorObjectEdited;
-							_boat setDir (getPos player getDir _posB);
-							[z1,[[_boat],true]] remoteExec ["addCuratorEditableObjects", 2, false]; //add unit to zeus
-							if(diverG==1)then
-							{
-								{_boat addItemCargoGlobal [_x, 1];} forEach divE; //add diving gear to cargo
-								_boat addWeaponCargoGlobal [divW, 1];
-								_boat addMagazineCargoGlobal [divM, 3];
-							};
-							//[_boat] remoteExec ["wrm_fnc_pushBoat", 0, true]; //add action to push boat to the water
-							boatTrUsed = 1;
-							player removeAction BoatTrAction;
-						} else 
-						{
-							hint "You are too far from the water";
-						};
-					}, //script
-					nil, //arguments (Optional)
-					0.1, //priority (Optional)
-					false, //showWindow (Optional)
-					true, //hideOnUse (Optional)
-					"", //shortcut, (Optional) 
-					"", //condition,  (Optional)
-					0, //radius, (Optional) -1disable, 15max
-					false, //unconscious, (Optional)
-					"" //selection]; (Optional)
-				]; 
-			};
+			};			
 		};
 		lUpdate = 1;
 	};
@@ -222,11 +135,21 @@ if (leader player == player) then
 					if(fort3==0)then{[player,f3] call BIS_fnc_holdActionRemove;};
 					fort = 0;
 				};
-				if (carUsed==0) then {player removeAction carAction;};
-				if (truckUsed==0) then {player removeAction truckAction;};
-				if (boatTrUsed==0) then {player removeAction BoatTrAction;};		
-				if (boatArUsed==0 && boatsAr==1) then {player removeAction BoatArAction;};
-				
+				if(airDrop==0)then
+				{
+					if (suppUsed==0||carUsed==0||truckUsed==0||boatArUsed==0||boatTrUsed==0) then 
+					{
+						player removeAction dropAction;
+					};
+				}else
+				{
+					if (suppUsed==0) then {player removeAction supplyAction;};
+					if (carUsed==0) then {player removeAction carAction;};
+					if (truckUsed==0) then {player removeAction truckAction;};
+					if (boatTrUsed==0) then {player removeAction BoatTrAction;};		
+					if (boatArUsed==0 && boatsAr==1) then {player removeAction BoatArAction;};
+					airDrop = 0;
+				};
 			};
 		};
 		

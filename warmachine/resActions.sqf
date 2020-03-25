@@ -6,6 +6,8 @@ waitUntil {alive player}; //player has respawned
 //reset player actions menu
 if (lUpdate == 2) then {player removeAction LDRaction; [player, SupReq] remoteExec ["BIS_fnc_removeSupportLink", 0, false];};
 if (lUpdate == 1) then {player removeAction LDRdown;};
+if (airDrop==0) then {player removeAction dropAction;};
+if (suppUsed==0) then {player removeAction supplyAction;};
 if (carUsed==0) then {player removeAction carAction;};
 if (truckUsed==0) then {player removeAction truckAction;};
 if (boatArUsed==0 && boatsAr==1) then {player removeAction BoatArAction;};
@@ -15,6 +17,8 @@ if (fort==1&&fort1==0) then {[player,f1] call BIS_fnc_holdActionRemove;};
 if (fort==1&&fort2==0) then {[player,f2] call BIS_fnc_holdActionRemove;};
 if (fort==1&&fort3==0) then {[player,f3] call BIS_fnc_holdActionRemove;};
 
+airDrop=0;
+suppUsed=0;
 carUsed=0;
 truckUsed=0;
 boatArUsed=0;

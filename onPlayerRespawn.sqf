@@ -2,6 +2,7 @@
 
 //variables setup
 lUpdate = 0;
+airDrop=0;
 fort = 0;
 
 //respawn at the sector, random position around the sector

@@ -30,6 +30,7 @@ class wrm
 		class flagActions {};
 		class arsInit {};
 		class arsenal {};
+		class airDrop {};
 		class fortification {};
 		class pushVeh {};
 		class flipVeh {};

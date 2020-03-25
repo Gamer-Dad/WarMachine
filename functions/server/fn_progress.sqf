@@ -138,7 +138,7 @@ if (progress == 2) then //fight for SECTORS
 		call
 		{		
 			if((_plw>0)&&(_ple>0))exitWith{coop=0;publicvariable "coop";}; //PvP
-			//if((_plw==0)&&(_ple==0))exitWith{coop=3;publicvariable "coop";}; //player is civilian
+			if((_plw==0)&&(_ple==0))exitWith{if(sideD==sideW)then{coop=2;}else{coop=1;};publicvariable "coop";}; //no players
 			if(_plw>0)exitWith{coop=1; publicvariable "coop";};
 			if(_ple>0)exitWith{coop=2; publicvariable "coop";};
 

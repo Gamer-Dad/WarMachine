@@ -35,22 +35,27 @@ while {_p==0} do
 };
 
 sleep 30;
+if (progress>0) exitWith {};
 [parseText format ["Mission will start in 3 min. automatically<br/><br/>Or you can create your own mission in the <br/>MISSION GENERATOR<br/>(actions menu)"]] remoteExec ["hint", 0, false];
 sleep 60;
+if (progress>0) exitWith {};
 [parseText format ["Mission will start in 2 min. automatically<br/><br/>Or you can create your own mission in the <br/>MISSION GENERATOR<br/>(actions menu)"]] remoteExec ["hint", 0, false];
 sleep 60;
+if (progress>0) exitWith {};
 [parseText format ["Mission will start in 1 min. automatically<br/><br/>Or you can create your own mission in the <br/>MISSION GENERATOR<br/>(actions menu)"]] remoteExec ["hint", 0, false];
 sleep 60;
+if (progress>0) exitWith {};
+
 //close dialog window
 [0] remoteExec ["closeDialog", 0, false]; //closeDialog 0;
-progress = 1;  publicVariable "progress";
 //countdown
 for "_i" from 10 to 0 step -1 do //loop 10
 {
 	[parseText format ["MISSION START IN %1", _i]] remoteExec ["hint", 0, false];
 	sleep 1;
 };
-
+if (progress>0) exitWith {};
+progress = 1;  publicVariable "progress";
 [""] remoteExec ["hint", 0, false];
 [["CREATING MISSION", "BLACK", 3]] remoteExec ["titleText", 0, false];
 sleep 3;

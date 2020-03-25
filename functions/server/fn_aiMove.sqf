@@ -34,9 +34,8 @@ if(progress<3)then
 {
 	_un=[]; _t=0;
 	if (sideA countSide allPlayers>0) 
-	then {{if (side _x == sideA) then {_un pushBack _x};} forEach allPlayers;} 
-	else {{if (side _x == sideA) then {_un pushBack _x};} forEach playableUnits;};
-	{if (_x distance posF < minDis) then {_t=1;};} forEach _un;
+	then {{if ((side _x == sideA)&&(_x distance posF < minDis)) then {_t=1;};} forEach allPlayers;} 
+	else {_t=1;};
 
 	if(_t==0)then
 	{

@@ -199,6 +199,7 @@ if(AIon>1)then
 	{
 		if(AIon==3||AIon==6)exitWith{coop=0; publicvariable "coop";};
 		if((_plw>0)&&(_ple>0))exitWith{coop=0; publicvariable "coop";};
+		if((_plw==0)&&(_ple==0))exitWith{coop=0; publicvariable "coop";};
 		if(_plw>0)exitWith{coop=1; publicvariable "coop";};
 		if(_ple>0)exitWith{coop=2; publicvariable "coop";};
 	};
