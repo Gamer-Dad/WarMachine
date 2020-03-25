@@ -11,7 +11,6 @@ class wrm
 		class flagDelete {};
 		class aiUpdate {};
 		class aiMove {};
-		class suppBox {};
 		class timer {};
 		class equipment {};
 		class aiVehicle {};
@@ -33,6 +32,7 @@ class wrm
 		class airDrop {};
 		class fortification {};
 		class pushVeh {};
-		class flipVeh {};
+		class safeZone {};
+		
 	};
 };

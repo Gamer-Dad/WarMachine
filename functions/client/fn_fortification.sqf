@@ -34,7 +34,8 @@ f1=[
 		_bag setDir (getDir player);
 		_bag setPos [(getPos _bag select 0),(getPos _bag select 1),(_posZ select 2)];
 		fort1 = 1;
-		hint"Good job soldier";
+		hint"";
+		systemChat "fortification built";
 	}, //codeCompleted
 	{}, //codeInterrupted
 	[], //arguments
@@ -63,10 +64,10 @@ f2=[
 		_bag = createVehicle ["Land_BagFence_Round_F", (player getRelPos [1.9, 315]), [], 0, "CAN_COLLIDE"];
 		_bag setDir ((getDir player)+135);
 		_bag setPos [(getPos _bag select 0),(getPos _bag select 1),((_posZ select 2) - 0.1)];
-		if(((getPos player)select 2)==((getPosAtl player)select 2))then{_bag setVectorUp surfaceNormal getPos _bag;};
-		
+		if(((getPos player)select 2)==((getPosAtl player)select 2))then{_bag setVectorUp surfaceNormal getPos _bag;};		
 		fort2 = 1;
-		hint"Good job soldier";
+		hint"";
+		systemChat "fortification built";
 	}, //codeCompleted
 	{}, //codeInterrupted
 	[], //arguments
@@ -92,7 +93,8 @@ f3=[
 		_bag setPos [(getPos _bag select 0),(getPos _bag select 1),(_posZ select 2)];
 		if(((getPos player)select 2)==((getPosAtl player)select 2))then{_bag setVectorUp surfaceNormal getPos _bag;};
 		fort3 = 1;
-		hint"Good job soldier";
+		hint"";
+		systemChat "fortification built";
 	}, //codeCompleted
 	{}, //codeInterrupted
 	[], //arguments

@@ -22,10 +22,34 @@ sideW = west; //independent
 sideE = east; //independent
 factionW = "NATO"; //name of the faction
 factionE = "CSAT"; //name of the faction
-flgW = "Flag_NATO_F"; //flag asset name  ("Flag_AAF_F")
-flgE = "Flag_CSAT_F"; //flag asset name
-supplyW = ["B_supplyCrate_F","B_CargoNet_01_ammo_F"]; //supplyBox ["I_supplyCrate_F","I_CargoNet_01_ammo_F"]
-supplyE = ["O_supplyCrate_F","O_CargoNet_01_ammo_F"];
+flgW = ""; flgE = ""; supplyW = []; supplyE = [];
+call
+{
+	if(factionW=="NATO")exitWith{supplyW=["B_supplyCrate_F","B_CargoNet_01_ammo_F"];flgW = "Flag_NATO_F";};
+	if(factionW=="CSAT")exitWith{supplyW=["O_supplyCrate_F","O_CargoNet_01_ammo_F"];flgW = "Flag_CSAT_F";};
+	if(factionW=="AAF")exitWith{supplyW=["I_supplyCrate_F","I_CargoNet_01_ammo_F"];flgW = "Flag_AAF_F";};
+	if(factionW=="LDF")exitWith{supplyW=["I_EAF_supplyCrate_F","I_E_CargoNet_01_ammo_F"];flgW = "Flag_EAF_F";};
+	if(factionW=="USAF")exitWith{supplyW=["rhsusf_weapon_crate"];flgW = "Flag_US_F";};
+	if(factionW=="AFRF")exitWith{supplyW=["rhs_weapon_crate"];flgW = "RHS_Flag_Russia_F";};
+	if(factionW=="Wermacht"||factionW=="Afrikakorps")exitWith{supplyW=["LIB_BasicWeaponsBox_GER"];flgW = "LIB_FlagCarrier_GER";};
+	if(factionW=="UK Army"||factionE=="Desert rats")exitWith{supplyW=["LIB_BasicWeaponsBox_UK"];flgW = "LIB_FlagCarrier_UK";};
+	if(factionW=="Red army")exitWith{supplyW=["LIB_BasicWeaponsBox_SU"];flgW = "LIB_FlagCarrier_SU";};
+	if(factionW=="US Army")exitWith{supplyW=["LIB_BasicWeaponsBox_US"];flgW = "LIB_FlagCarrier_USA";};
+};
+call
+{
+	if(factionE=="NATO")exitWith{supplyE=["B_supplyCrate_F","B_CargoNet_01_ammo_F"];flgW = "Flag_NATO_F";};
+	if(factionE=="CSAT")exitWith{supplyE=["O_supplyCrate_F","O_CargoNet_01_ammo_F"];flgW = "Flag_CSAT_F";};
+	if(factionE=="AAF")exitWith{supplyE=["I_supplyCrate_F","I_CargoNet_01_ammo_F"];flgW = "Flag_AAF_F";};
+	if(factionE=="LDF")exitWith{supplyE=["I_EAF_supplyCrate_F","I_E_CargoNet_01_ammo_F"];flgW = "Flag_EAF_F";};
+	if(factionE=="USAF")exitWith{supplyE=["rhsusf_weapon_crate"];flgW = "Flag_US_F";};
+	if(factionE=="AFRF")exitWith{supplyE=["rhs_weapon_crate"];flgW = "RHS_Flag_Russia_F";};
+	if(factionE=="Wermacht"||factionE=="Afrikakorps")exitWith{supplyE=["LIB_BasicWeaponsBox_GER"];flgW = "LIB_FlagCarrier_GER";};
+	if(factionE=="UK Army"||factionE=="Desert rats")exitWith{supplyE=["LIB_BasicWeaponsBox_UK"];flgW = "LIB_FlagCarrier_UK";};
+	if(factionE=="Red army")exitWith{supplyE=["LIB_BasicWeaponsBox_SU"];flgW = "LIB_FlagCarrier_SU";};
+	if(factionE=="US Army")exitWith{supplyE=["LIB_BasicWeaponsBox_US"];flgW = "LIB_FlagCarrier_USA";};
+};
+
 //OBJECT POOLS-------------------------------------------------------------------------------------------------EDITABLE//
 strAlpha = ["O_Truck_03_device_F","Land_Device_disassembled_F","Land_Device_assembled_F","B_UAV_02_F","O_UAV_02_F","B_UAV_05_F","B_T_UAV_03_F","O_T_UAV_04_CAS_F"]; //"I_UAV_02_F"
 strBravo = ["Land_Wreck_Heli_Attack_01_F","Land_Wreck_Slammer_F","Land_Wreck_Hunter_F","Land_Wreck_Heli_Attack_02_F","Land_UWreck_MV22_F","Land_Wreck_LT_01_F","Land_Wreck_MBT_04_F","Land_Wreck_AFV_Wheeled_01_F"];
@@ -80,17 +104,17 @@ call
 	if (sideW == west) exitWith 
 	{
 		numW = 0; colorW = "colorBLUFOR"; iconW = "b_hq"; resStartW = "respawn_west_start"; resBaseW = "respawn_west_base"; resFobW = "respawn_west_fob"; resAW = "respawn_west_a"; resBW = "respawn_west_b"; resCW = "respawn_west_c"; endW = "End1"; AmmoW = wAmmo;
-		SupReqW = wSupReq; SupDropW = wSupDrop; SupHeliW = wSupHeli; SupArtyW = wSupArty; SupCasHW = wSupCasH; SupCasBW = wSupCasB;
+		SupReqW = wSupReq; SupArtyW = wSupArty; SupCasHW = wSupCasH; SupCasBW = wSupCasB;
 	};
 	if (sideW == east) exitWith 
 	{
 		numW = 1; colorW = "colorOPFOR"; iconW = "o_hq"; resStartW = "respawn_east_start"; resBaseW = "respawn_east_base"; resFobW = "respawn_east_fob"; resAW = "respawn_east_a"; resBW = "respawn_east_b"; resCW = "respawn_east_c"; endW = "End2"; AmmoW = eAmmo;
-		SupReqW = eSupReq; SupDropW = eSupDrop; SupHeliW = eSupHeli; SupArtyW = eSupArty; SupCasHW = eSupCasH; SupCasBW = eSupCasB;
+		SupReqW = eSupReq; SupArtyW = eSupArty; SupCasHW = eSupCasH; SupCasBW = eSupCasB;
 	};
 	if (sideW == independent) exitWith 
 	{
 		numW = 2; colorW = "colorIndependent"; iconW = "n_hq"; resStartW = "respawn_guerrila_start"; resBaseW = "respawn_guerrila_base"; resFobW = "respawn_guerrila_fob"; resAW = "respawn_guerrila_a"; resBW = "respawn_guerrila_b"; resCW = "respawn_guerrila_c"; endW = "End3"; AmmoW = iAmmo;
-		SupReqW = iSupReq; SupDropW = iSupDrop; SupHeliW = iSupHeli; SupArtyW = iSupArty; SupCasHW = iSupCasH; SupCasBW = iSupCasB;
+		SupReqW = iSupReq; SupArtyW = iSupArty; SupCasHW = iSupCasH; SupCasBW = iSupCasB;
 	};
 };
 call
@@ -98,17 +122,17 @@ call
 	if (sideE == west) exitWith 
 	{
 		numE = 0; colorE = "colorBLUFOR"; iconE = "b_hq"; resStartE = "respawn_west_start"; resBaseE = "respawn_west_base"; resFobE = "respawn_west_fob"; resAE = "respawn_west_a"; resBE = "respawn_west_b"; resCE = "respawn_west_c"; endE = "End1"; AmmoE = wAmmo;
-		SupReqE = wSupReq; SupDropE = wSupDrop; SupHeliE = wSupHeli; SupArtyE = wSupArty; SupCasHE = wSupCasH; SupCasBE = wSupCasB;
+		SupReqE = wSupReq; SupArtyE = wSupArty; SupCasHE = wSupCasH; SupCasBE = wSupCasB;
 	};
 	if (sideE == east) exitWith 
 	{
 		numE = 1; colorE = "colorOPFOR"; iconE = "o_hq"; resStartE = "respawn_east_start"; resBaseE = "respawn_east_base"; resFobE = "respawn_east_fob"; resAE = "respawn_east_a"; resBE = "respawn_east_b"; resCE = "respawn_east_c"; endE = "End2"; AmmoE = eAmmo;
-		SupReqE = eSupReq; SupDropE = eSupDrop; SupHeliE = eSupHeli; SupArtyE = eSupArty; SupCasHE = eSupCasH; SupCasBE = eSupCasB;
+		SupReqE = eSupReq; SupArtyE = eSupArty; SupCasHE = eSupCasH; SupCasBE = eSupCasB;
 	};
 	if (sideE == independent) exitWith 
 	{
 		numE = 2; colorE = "colorIndependent"; iconE = "n_hq"; resStartE = "respawn_guerrila_start"; resBaseE = "respawn_guerrila_base"; resFobE = "respawn_guerrila_fob"; resAE = "respawn_guerrila_a"; resBE = "respawn_guerrila_b"; resCE = "respawn_guerrila_c"; endE = "End3"; AmmoE = iAmmo;
-		SupReqE = iSupReq; SupDropE = iSupDrop; SupHeliE = iSupHeli; SupArtyE = iSupArty; SupCasHE = iSupCasH; SupCasBE = iSupCasB;
+		SupReqE = iSupReq; SupArtyE = iSupArty; SupCasHE = iSupCasH; SupCasBE = iSupCasB;
 	};
 };
 fobW = format ["FOB %1", factionW];

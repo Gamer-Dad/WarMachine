@@ -60,7 +60,7 @@ if (progress < 3) //progress
 then {_c = count ([true] call BIS_fnc_moduleSector); if (_c==1) then {_sec = format ["Capture %1 sector", _c];} else {_sec = format ["Capture %1 sectors", _c];};}
 else {_sec = taskF;};
 
-if (support < 2) //Combat support
+if (support == 0) //Combat support
 then {_supp = "available";}
 else {_supp = "unavailable";};
 

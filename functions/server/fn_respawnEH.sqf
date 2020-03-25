@@ -211,4 +211,5 @@ if(!_placed)then
 	_unit setVehiclePosition [(selectRandom _posR), [], 0, "NONE"]; //place _unit
 };
 sleep 0.1;if(_unit==leader _unit)then{[] call wrm_fnc_aiMove;};
+[_unit] spawn wrm_fnc_safeZone;
 true; //return value BOOLEAN

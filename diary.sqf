@@ -67,17 +67,16 @@ player createDiaryRecord
 ["Diary",["Features","
 MISSION GENERATOR (Actions menu) - Create mission. Opens setup dialog window. Select area of operation, set up mission parameters, start mission.<br/><br/>
 SECTORS - The capture area of the Sectors (Fob) has a radius of 50 meters. Holding majority of the sectors reduces opponents respawn tickets. Capturing speed depends on the number of players and AI units present in the area. More players / AI units = faster capturing. Reward: respawn position, combat support.<br/><br/>
-COMBAT SUPPORT - Every squad leader can access combat support by pressing 0-8-(support type). Supply drop is available from the mission start (every 5 minutes). CAS and artillery is obtained as a reward after capturing a sector. (every 20 minutes)<br/><br/>
+COMBAT SUPPORT - Every squad leader can access combat support by pressing 0-8-(support type). CAS and artillery is obtained as a reward after capturing a sector. (every 20 minutes)<br/><br/>
 FLAGS - Serve as a teleports for fast travel between Base, Fob and Runway.<br/><br/>
 MARKERS - Represent position of the Base, Fob and respawn positions of the vehicles.<br/><br/>
 CUSTOM LOADOUT - You can create custom loadout in the virtual arsenal, supply box on the base. Custom Loadout is available in the respawn menu: Default > Custom Loadout<br/><br/>
 EQUIPMENT - Appropriate equipment is required for special actions. No role restrictions. | Medkit, First aid kit - revive teammates | Toolkit - repair vehicles and defuse explosives | UAV terminal – hack and operate UAV<br/><br/>
 BECOME SQUAD LEADER (Actions menu) - You can become leader of your squad.<br/><br/>
 LEAVE LEADER POSITION (Actions menu) - To leave the squad leader position.<br/><br/>
+AIR DROP (Actions menu) -  Squad leader can request an airdrop. Supplybox | Car | Truck | Patrol boat | Small boat.<br/><br/>
 FORTIFICATION (Actions menu) - As a squad leader, you can build fortifications.<br/><br/>
-REQUEST CAR (Actions menu) - Squad leader can request a car airdrop once per game.<br/><br/>
-REQUEST PATROL BOAT (Actions menu) - As a squad leader, you can request a patrol boat once per game.<br/><br/>
-REQUEST BOAT (Actions menu) - Small transport boat is available for the squad leader after each respawn.<br/><br/>
+FLIP VEHICLE (Actions menu) - Turn vehicle back on the wheels.<br/><br/>
 PUSH THE BOAT (Actions menu) - Player can push the boat into the water (Boat will be moved 15m in front of the player)
 "]];
 

@@ -22,7 +22,6 @@
 		[] execVM "warmachine\aiStart.sqf";
 */
 if !(isServer) exitWith {}; //runs on the server/host
-
 //sort groups
 _grpsW=[];_grpsE=[];_grpsA= [];_grps= [];
 {_grpsA pushBackUnique group _x} forEach playableUnits;
@@ -175,6 +174,9 @@ if(AIon>4)then
 		} forEach _ge;
 	};
 };
+
+sleep 1;
+{if (!isPlayer _x) then {[_x] spawn wrm_fnc_safeZone;};} forEach playableUnits; //safe zone protection
 
 //spawn AI vehicles
 if(AIon>1)then

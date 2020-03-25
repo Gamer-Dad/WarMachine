@@ -83,3 +83,4 @@ if !(isPlayer leader player) then
 };
 if ("Param2" call BIS_fnc_getParamValue == 1) then{[] call wrm_fnc_arsenal;};
 [player] spawn wrm_fnc_equipment;
+[player] spawn wrm_fnc_safeZone;

@@ -104,7 +104,7 @@ class missionsGenerator
 			y = 0.34606 * safezoneH + safezoneY;
 			w = 0.1375 * safezoneW;
 			h = 0.0219914 * safezoneH;
-			tooltip = "Combat support available for the squad leaders. Supply drop on the start. CAS and artilery as reward after capturing a sector"; //--- ToDo: Localize;
+			tooltip = "CAS and Artilery. Combat support is available for the squad leaders as a reward after capturing sectors"; //--- ToDo: Localize;
 		};
 		class taxt32: RscText
 		{

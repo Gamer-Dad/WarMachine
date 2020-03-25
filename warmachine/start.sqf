@@ -961,12 +961,12 @@ _supportW = [];
 _supportE = [];
 if(artillery==1)then //artillery
 {
-	_supportW = [SupDropW, SupHeliW, SupArtyW, SupCasHW, SupCasBW];
-	_supportE = [SupDropE, SupHeliE, SupArtyE, SupCasHE, SupCasBE];
+	_supportW = [SupArtyW, SupCasHW, SupCasBW]; //SupDropW, SupHeliW, 
+	_supportE = [SupArtyE, SupCasHE, SupCasBE];
 } else //mortars
 {
-	_supportW = [SupDropW, SupHeliW, SupCasHW, SupCasBW];
-	_supportE = [SupDropE, SupHeliE, SupCasHE, SupCasBE];
+	_supportW = [SupCasHW, SupCasBW];
+	_supportE = [SupCasHE, SupCasBE];
 	_posArtyW = posBaseWest findEmptyPosition [10, 50, "B_MRAP_01_F"];
 	if(count _posArtyW==0)then{_posArtyW=objectBaseWest getRelPos [30,90];};
 	SupArtyW setPos _posArtyW;
@@ -979,7 +979,7 @@ _posSuppW = plHW getRelPos [20, 90];
 _posSuppE = plHE getRelPos [20, 90];
 {_x setPos _posSuppW;} forEach _supportW;
 {_x setPos _posSuppE;} forEach _supportE;
-
+/*
 //Transport, Supply synchronize with requester
 if (support == 0 || support == 1) then
 {
@@ -987,7 +987,7 @@ if (support == 0 || support == 1) then
 	[SupReqW, SupDropW] remoteExec ["BIS_fnc_addSupportLink", 0, true];
 	//[SupReqE, SupHeliE] remoteExec ["BIS_fnc_addSupportLink", 0, true];
 	[SupReqE, SupDropE] remoteExec ["BIS_fnc_addSupportLink", 0, true];
-};
+};*/
 sleep 1;
 
 //teleports playable units to the BASE, players will respawn------------------------------SERVER//

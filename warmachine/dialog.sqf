@@ -57,9 +57,8 @@ _menu22 =
 //Combat support
 _menu31 = 
 [
-	["Supply Artillery CAS","Supply drop available every 5 minutes. Artillery or CAS after capturing a sector. Available every 20 minutes."],
-	["Supply","Supply drop available every 5 minutes"],
-	["None","No combat support"]
+	["Enabled","Artillery or CAS after capturing a sector. Available every 20 minutes."],
+	["Disabled","No combat support"]
 ];
 //Fog
 _menu32 = 
