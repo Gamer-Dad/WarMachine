@@ -112,10 +112,10 @@ if (progress == 2) then //fight for SECTORS
 		};
 		
 	};
-	_restW = [sideW] call BIS_fnc_respawnTickets; 
-	_restE = [sideE] call BIS_fnc_respawnTickets;
-	[sideW, ((tic*0.5) - _restW)] call BIS_fnc_respawnTickets;
-	[sideE, ((tic*0.5) - _restE)] call BIS_fnc_respawnTickets;
+	_restW = [sideA] call BIS_fnc_respawnTickets; 
+	_restE = [sideD] call BIS_fnc_respawnTickets;
+	[sideA, (tic - _restW)] call BIS_fnc_respawnTickets; //Attackers have advantage
+	[sideD, ((tic*0.5) - _restE)] call BIS_fnc_respawnTickets;
 
 	[sectorF, sideD] call BIS_fnc_moduleSector; //initialize sector
 	["mFob"] remoteExec ["deleteMarkerLocal", 0, true]; //delete local marker for FOB
@@ -147,6 +147,7 @@ if (progress == 2) then //fight for SECTORS
 		if(sideD==sideW && coop==2)
 		then
 		{
+			if((AIon==3||AIon==4||AIon==6||AIon==7)&&(alive (leader gApcW))&&((vehicle leader gApcW)!=(leader gApcW)))exitWith{};
 			_types=[];
 			if(missType>0)
 			then{_types = selectRandom [ArmorW1,ArmorW2];}
@@ -168,6 +169,7 @@ if (progress == 2) then //fight for SECTORS
 		if(sideD==sideE && coop==1)
 		then
 		{
+			if((AIon==3||AIon==4||AIon==6||AIon==7)&&(alive (leader gApcE))&&((vehicle leader gApcE)!=(leader gApcE)))exitWith{};
 			_types=[];
 			if(missType>0)
 			then{_types = selectRandom [ArmorE1,ArmorE2];}

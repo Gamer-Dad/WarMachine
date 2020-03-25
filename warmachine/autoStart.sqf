@@ -34,7 +34,8 @@ while {_p==0} do
 	sleep 1;
 };
 
-sleep 30;
+sleep 5;
+/*
 if (progress>0) exitWith {};
 [parseText format ["Mission will start in 3 min. automatically<br/><br/>Or you can create your own mission in the <br/>MISSION GENERATOR<br/>(actions menu)"]] remoteExec ["hint", 0, false];
 sleep 60;
@@ -45,7 +46,7 @@ if (progress>0) exitWith {};
 [parseText format ["Mission will start in 1 min. automatically<br/><br/>Or you can create your own mission in the <br/>MISSION GENERATOR<br/>(actions menu)"]] remoteExec ["hint", 0, false];
 sleep 60;
 if (progress>0) exitWith {};
-
+*/
 //close dialog window
 [0] remoteExec ["closeDialog", 0, false]; //closeDialog 0;
 //countdown

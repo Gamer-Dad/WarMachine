@@ -4,11 +4,13 @@
 	Description:
 		0 - Disabled (Only AI units lead by the player join the battle)
 		1 - Infantry only (AI units don't use vehicles autonomously)
-		2 - Vehicles & Infantry - Default (AI vehicles spawn on the mission start)
-		3 - Continuous mechanized support (AI vehicles spawn continuously)
-		4 - Vehicles & Infantry - 2 (AI vehicles spawn on the mission start. At the beginning AI units board the vehicles at the BASE)
-		5 - Continuous mech. support - 2 (AI vehicles spawn continuously. At the beginning AI units board the vehicles at the BASE)
-		
+		2 - Vehicles & Infantry (AI vehicles spawn on the mission start)
+		3 - Continuous support-balanced (AI vehicles spawn continuously for both sides)
+		4 - Continuous support-challenging (In coop AI vehicles spawn continuously on the enemy side)
+		5 - Vehicles & Infantry-2 (AI vehicles spawn on the mission start. At the beginning AI units board the vehicles at the BASE)
+		6 - Continuous support 2-balanced (AI vehicles spawn continuously for both sides. At the beginning AI units board the vehicles at the BASE)
+		7 - Continuous support 2-challenging (In coop AI vehicles spawn continuously. At the beginning AI units board the vehicles at the BASE)
+	
 	Parameter(s):
 		none
 		

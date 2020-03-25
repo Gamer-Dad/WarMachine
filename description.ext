@@ -63,7 +63,7 @@ enableDebugConsole = 1; //debug console for admin
 //LOBBY PARAMETERS
 titleParam1 = "Who can use MISSION GENERATOR and create mission";
 valuesParam1[] = {0,1};
-defValueParam1 = 1;
+defValueParam1 = 0;
 textsParam1[] = {"Admin and server Host","Anyone"};
 
 titleParam2 = "VIRTUAL ARSENAL";

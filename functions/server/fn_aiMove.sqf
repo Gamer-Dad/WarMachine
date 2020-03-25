@@ -25,6 +25,13 @@ _grpsE=[];
 _grpsA= [];
 _grps= [];
 {if(count units _x>1)then{_grpsA pushBackUnique _x};} forEach allGroups;
+
+if(missType==2)then
+{
+	if(alive aiCasW)then{_grpsA=_grpsA+[(group driver aiCasW)];};
+	if(alive aiCasE)then{_grpsA=_grpsA+[(group driver aiCasE)];};	
+};
+
 //remove spawned vehicles from groups
 if(progress<3)then
 {
@@ -66,13 +73,6 @@ if(progress<3)then
 		if(AIapcD==1)then{_grpsA=_grpsA-[gApcD];};
 	};
 };
-
-if(missType==2)then
-{
-	if(alive aiCasW)then{_grpsA=_grpsA+[(group driver aiCasW)];};
-	if(alive aiCasE)then{_grpsA=_grpsA+[(group driver aiCasE)];};	
-};
-
 
 {if!(isPlayer leader _x)then{_grps pushBackUnique _x;};} forEach _grpsA;
 {
