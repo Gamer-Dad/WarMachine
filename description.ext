@@ -1,0 +1,264 @@
+//Author: IvosH
+
+//load dialog template, functions 
+#include "warmachine\defines.hpp"
+#include "warmachine\dialog.hpp"
+#include "admin\adminMenu.hpp"
+class cfgFunctions 
+{
+	#include "functions\cfgfunctions.hpp"
+};
+
+//MISSION ATRIBUTES
+overviewText = "Advance And Secure game mode for Arma 3, with dynamically generated missions. Inspired by the Battlefield games, combining conquest and rush game modes. Multiplayer scenario can be played as SP / Coop / PvP. Game mode is playable from 1 to 48 players. <br/><br/>VARIABILITY <br/>Every created mission is unique. In the mission generator, you can select any place on the map, set up mission parameters, or leave it randomized. You can easily create missions from small scale infantry combat to battlefield style scenario with all the vehicles, artillery and close air support. Capture points and FOBs are every time different. <br/><br/>IN ACTION <br/>Improved AI system is designed to populate battlefield with low number of players. AI units follow squad leader (player) and respawn at his position, or in the vehicle occupied by him. If autonomous AI is enabled, all AI units will join the battle and attack objectives. It's recommended to be a squad leader. Occupy the squad leader positions first in the lobby, or select BECOME SQUAD LEADER in the actions menu. <br/><br/>FOCUSED ON COMBAT <br/>Your main task is to fight with your team for victory. All weapons and vehicles are available from start. No restrictions to unlock equipment. No complicated logistics. Choose your favorite weapon and fight.";
+overviewTextLocked = "Advance And Secure game mode for Arma 3, with dynamically generated missions. Inspired by the Battlefield games, combining conquest and rush game modes. Multiplayer scenario can be played as SP / Coop / PvP. Game mode is playable from 1 to 48 players. <br/><br/>VARIABILITY <br/>Every created mission is unique. In the mission generator, you can select any place on the map, set up mission parameters, or leave it randomized. You can easily create missions from small scale infantry combat to battlefield style scenario with all the vehicles, artillery and close air support. Capture points and FOBs are every time different. <br/><br/>IN ACTION <br/>Improved AI system is designed to populate battlefield with low number of players. AI units follow squad leader (player) and respawn at his position, or in the vehicle occupied by him. If autonomous AI is enabled, all AI units will join the battle and attack objectives. It's recommended to be a squad leader. Occupy the squad leader positions first in the lobby, or select BECOME SQUAD LEADER in the actions menu. <br/><br/>FOCUSED ON COMBAT <br/>Your main task is to fight with your team for victory. All weapons and vehicles are available from start. No restrictions to unlock equipment. No complicated logistics. Choose your favorite weapon and fight.";
+
+overviewPicture = "lobby.paa";
+onLoadName = "WARMACHINE Altis"; //napis nahore
+OnLoadMission = "NATO vs CSAT"; //napis dole
+loadScreen = "lobby.paa";
+author = "IvosH";
+
+class Header
+{
+	gameType = SC;
+	minPlayers = 6;
+	maxPlayers = 48;
+};
+
+//RESPAWN
+respawn = 3;
+respawnDelay = 120; //120
+respawnVehicleDelay = 120; //120
+respawnOnStart = 1;
+respawnTemplates[] = {"Revive","MenuPosition","MenuInventory","Tickets","Spectator"};
+
+//REVIVE
+ReviveMode = 1;						//0: disabled, 1: enabled, 2: controlled by player attributes
+ReviveUnconsciousStateMode = 1;			//0: basic, 1: advanced, 2: realistic
+ReviveRequiredTrait = 0;				//0: none, 1: medic trait is required
+ReviveRequiredItems = 2;				//0: none, 1: medkit, 2: medkit or first aid kit
+ReviveRequiredItemsFakConsumed = 1;		//0: first aid kit is not consumed upon revive, 1: first aid kit is consumed
+ReviveDelay = 6;						//time needed to revive someone (in secs)
+ReviveMedicSpeedMultiplier = 1;			//speed multiplier for revive performed by medic
+ReviveForceRespawnDelay = 3;			//time needed to perform force respawn (in secs)
+ReviveBleedOutDelay = 180;				//unconscious state duration (in secs)
+
+//DELETE DEAD BODIES
+corpseManagerMode = 1;
+corpseLimit = 16;
+corpseRemovalMinTime = 30;
+corpseRemovalMaxTime = 90;
+//DELETE WRECKS
+wreckManagerMode = 3;
+wreckLimit = 6;
+wreckRemovalMinTime = 60;
+wreckRemovalMaxTime = 180;
+
+saving = 0;
+taskManagement_propagate = 1;
+joinUnassigned = 0;
+enableDebugConsole = 1; //debug console for admin
+
+//LOBBY PARAMETERS
+titleParam1 = "Who can use MISSION GENERATOR and create mission";
+valuesParam1[] = {0,1};
+defValueParam1 = 1;
+textsParam1[] = {"Admin and server Host","Anyone"};
+
+titleParam2 = "VIRTUAL ARSENAL";
+valuesParam2[] = {0,1,2};
+defValueParam2 = 1;
+textsParam2[] = {"Disabled","Enabled - Recommended (Filtered by side and combat role)","Enabled -  Full arsenal (No restrictions)"};
+
+class Params
+{
+	class apexOn
+	{
+		title = "Apex DLC"; 
+		texts[] = {"Yes","No"};
+		values[] = {0,1};
+		default = 0;
+	};
+	class markOn
+	{
+		title = "Marksmen DLC";
+		texts[] = {"Yes","No"};
+		values[] = {0,1};
+		default = 0;
+	};
+
+	class heliOn
+	{
+		title = "Helicopters DLC";
+		texts[] = {"Yes","No"};
+		values[] = {0,1};
+		default = 0;
+	};
+	class jetsOn
+	{
+		title = "Jets DLC";
+		texts[] = {"Yes","No"};
+		values[] = {0,1};
+		default = 0;
+	};
+	class TankOn
+	{
+		title = "Tanks DLC";
+		texts[] = {"Yes","No"};
+		values[] = {0,1};
+		default = 0;
+	};
+};
+
+//ENDINGS------------------------------------------------------------------------------------------------EDITABLE//
+class CfgDebriefing
+{
+	class End1
+	{
+		title = "NATO victory";
+		subtitle = "";
+		description = "";
+		pictureBackground = "lobby.paa";
+		picture = "b_inf";
+	};
+	class End2
+	{
+		title = "CSAT victory";
+		subtitle = "";
+		description = "";
+		pictureBackground = "lobby.paa";
+		picture = "o_inf";
+	};
+	class End3
+	{
+		title = "AAF victory";
+		subtitle = "";
+		description = "";
+		pictureBackground = "lobby.paa";
+		picture = "n_inf";
+	};
+	class End4
+	{
+		title = "Mission Failed";
+		subtitle = "";
+		description = "";
+		pictureBackground = "lobby.paa";
+		picture = "KYA";
+	};
+};
+
+//LOADOUTS------------------------------------------------------------------------------------------------EDITABLE//
+class CfgRespawnInventory 
+{
+	//regular NATO
+	class WEST1 {vehicle = "B_Soldier_A_F";};
+	class WEST2 {vehicle = "B_Soldier_AAR_F";};
+	class WEST3 {vehicle = "B_Support_AMG_F";};
+	class WEST4 {vehicle = "B_Support_AMort_F";};
+	class WEST5 {vehicle = "B_Soldier_AAA_F";};
+	class WEST6 {vehicle = "B_Soldier_AAT_F";};
+	class WEST7 {vehicle = "B_Soldier_AR_F";};
+	class WEST8 {vehicle = "B_Medic_F";};
+	class WEST9 {vehicle = "B_Engineer_F";};
+	class WEST10 {vehicle = "B_Soldier_Exp_F";};
+	class WEST11 {vehicle = "B_Soldier_GL_F";};
+	class WEST12 {vehicle = "B_Support_GMG_F";};
+	class WEST13 {vehicle = "B_Support_MG_F";};
+	class WEST14 {vehicle = "B_Support_Mort_F";};
+	class WEST15 {vehicle = "B_soldier_M_F";};
+	class WEST16 {vehicle = "B_Soldier_AA_F";};
+	class WEST17 {vehicle = "B_Soldier_AT_F";};
+	class WEST18 {vehicle = "B_Officer_F";};
+	class WEST19 {vehicle = "B_Soldier_PG_F";};
+	class WEST20 {vehicle = "B_Soldier_Repair_F";};
+	class WEST21 {vehicle = "B_Soldier_F";};
+	class WEST22 {vehicle = "B_Soldier_LAT_F";};
+	class WEST23 {vehicle = "B_Soldier_SL_F";};
+	class WEST24 {vehicle = "B_Soldier_TL_F";};
+	class WEST25 {vehicle = "B_Soldier_UAV_F";};
+	//crew NATO
+	class WEST26 {vehicle = "B_Crew_F";}; 
+	class WEST27 {vehicle = "B_Helicrew_F";}; 
+	class WEST28 {vehicle = "B_Helipilot_F";}; 
+	class WEST29 {vehicle = "B_Pilot_F";};
+	//divers NATO
+	class WEST30 {vehicle = "B_Diver_F";};
+	class WEST31 {vehicle = "B_Diver_Exp_F";};
+	class WEST32 {vehicle = "B_Diver_TL_F";};
+	//special NATO
+	class WEST33 {vehicle = "B_Recon_Exp_F";};
+	class WEST34 {vehicle = "B_Recon_JTAC_F";};
+	class WEST35 {vehicle = "B_Recon_M_F";};
+	class WEST36 {vehicle = "B_Recon_Medic_F";};
+	class WEST37 {vehicle = "B_Recon_F";};
+	class WEST38 {vehicle = "B_Recon_LAT_F";};
+	class WEST39 {vehicle = "B_Recon_TL_F";};
+	class WEST40 {vehicle = "B_Sniper_F";};
+	class WEST41 {vehicle = "B_Spotter_F";};
+	//DLC NATO marksmen
+	class WEST42 {vehicle = "B_HeavyGunner_F";};
+	class WEST43 {vehicle = "B_Recon_Sharpshooter_F";};
+	class WEST44 {vehicle = "B_Sharpshooter_F";};
+	class WEST45 {vehicle = "B_ghillie_ard_F";};
+	class WEST46 {vehicle = "B_ghillie_lsh_F";};
+	class WEST47 {vehicle = "B_ghillie_sard_F";};
+	//DLC NATO tanks
+	class WEST48 {vehicle = "B_soldier_LAT2_F";};
+
+	//regular CSAT
+	class EAST1 {vehicle = "O_Soldier_A_F";};
+	class EAST2 {vehicle = "O_Soldier_AAR_F";}; 
+	class EAST3 {vehicle = "O_Support_AMG_F";}; 
+	class EAST4 {vehicle = "O_Support_AMort_F";}; 
+	class EAST5 {vehicle = "O_Soldier_AAA_F";}; 
+	class EAST6 {vehicle = "O_Soldier_AAT_F";}; 
+	class EAST7 {vehicle = "O_Soldier_AR_F";}; 
+	class EAST8 {vehicle = "O_Medic_F";}; 
+	class EAST9 {vehicle = "O_Engineer_F";}; 
+	class EAST10 {vehicle = "O_Soldier_Exp_F";}; 
+	class EAST11 {vehicle = "O_Soldier_GL_F";}; 
+	class EAST12 {vehicle = "O_Support_GMG_F";}; 
+	class EAST13 {vehicle = "O_Support_MG_F";}; 
+	class EAST14 {vehicle = "O_Support_Mort_F";}; 
+	class EAST15 {vehicle = "O_Soldier_M_F";}; 
+	class EAST16 {vehicle = "O_Soldier_AA_F";}; 
+	class EAST17 {vehicle = "O_Soldier_AT_F";}; 
+	class EAST18 {vehicle = "O_Officer_F";}; 
+	class EAST19 {vehicle = "O_Soldier_PG_F";}; 
+	class EAST20 {vehicle = "O_Soldier_Repair_F";}; 
+	class EAST21 {vehicle = "O_Soldier_F";}; 
+	class EAST22 {vehicle = "O_Soldier_LAT_F";}; 
+	class EAST23 {vehicle = "O_Soldier_SL_F";}; 
+	class EAST24 {vehicle = "O_Soldier_TL_F";}; 
+	class EAST25 {vehicle = "O_Soldier_UAV_F";};
+	//crew CSAT
+	class EAST26 {vehicle = "O_Crew_F";}; 
+	class EAST27 {vehicle = "O_Helicrew_F";}; 
+	class EAST28 {vehicle = "O_Helipilot_F";}; 
+	class EAST29 {vehicle = "O_Pilot_F";};
+	//divers CSAT
+	class EAST30 {vehicle = "O_Diver_F";};
+	class EAST31 {vehicle = "O_Diver_Exp_F";};
+	class EAST32 {vehicle = "O_Diver_TL_F";};
+	//special CSAT
+	class EAST33 {vehicle = "O_Recon_Exp_F";};
+	class EAST34 {vehicle = "O_Recon_JTAC_F";};
+	class EAST35 {vehicle = "O_Recon_M_F";};
+	class EAST36 {vehicle = "O_Recon_Medic_F";};
+	class EAST37 {vehicle = "O_Recon_F";};
+	class EAST38 {vehicle = "O_Recon_LAT_F";};
+	class EAST39 {vehicle = "O_Recon_TL_F";};
+	class EAST40 {vehicle = "O_Sniper_F";};
+	class EAST41 {vehicle = "O_Spotter_F";};
+	//DLC CSAT marksmen
+	class EAST42 {vehicle = "O_Sharpshooter_F";};
+	class EAST43 {vehicle = "O_HeavyGunner_F";};
+	class EAST44 {vehicle = "O_ghillie_lsh_F";};
+	class EAST45 {vehicle = "O_ghillie_sard_F";};
+	class EAST46 {vehicle = "O_ghillie_ard_F";};
+	class EAST47 {vehicle = "O_Pathfinder_F";};
+	//DLC CSAT tanks
+	class EAST48 {vehicle = "O_soldier_HAT_F";};
+	class EAST49 {vehicle = "O_soldier_AHAT_F";};
+};
