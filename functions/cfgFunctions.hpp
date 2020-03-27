@@ -33,6 +33,6 @@ class wrm
 		class fortification {};
 		class pushVeh {};
 		class safeZone {};
-		
+		class flipVeh {};
 	};
 };

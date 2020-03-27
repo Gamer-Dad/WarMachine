@@ -30,7 +30,8 @@ if (progress>1) then
 //add action to the action menu (Mission generator)
 if (progress < 1) then
 {
-	if (serverCommandAvailable "#kick" || "Param1" call BIS_fnc_getParamValue == 1||(count(allPlayers - entities "HeadlessClient_F")==1)) then
+	//if (serverCommandAvailable "#kick" || "Param1" call BIS_fnc_getParamValue == 1||(count(allPlayers - entities "HeadlessClient_F")==1)) then
+	if (serverCommandAvailable "#kick" || "Param1" call BIS_fnc_getParamValue == 1) then //DEDI
 	{
 		MGaction = player addAction 
 		[
