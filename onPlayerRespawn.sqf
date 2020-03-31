@@ -27,11 +27,17 @@ if (progress>1) then
 	};
 };
 
-//add action to the action menu (Mission generator)
-if (progress < 1) then
+//add actions to the action menu
+if (progress < 1) then 
 {
-	//if (serverCommandAvailable "#kick" || "Param1" call BIS_fnc_getParamValue == 1||(count(allPlayers - entities "HeadlessClient_F")==1)) then
-	if (serverCommandAvailable "#kick" || "Param1" call BIS_fnc_getParamValue == 1) then //DEDI
+	_a=0;
+	call
+	{
+		if("param1" call BIS_fnc_getParamValue == 2)exitWith{_a=1;}; //2
+		if(serverCommandAvailable "#kick")exitWith{_a=1;}; //0
+		if(("param1" call BIS_fnc_getParamValue == 1)&&(count(allPlayers - entities "HeadlessClient_F")==1))exitWith{_a=1;}; //1
+	};
+	if(_a==1)then //Mission generator
 	{
 		MGaction = player addAction 
 		[
@@ -49,6 +55,25 @@ if (progress < 1) then
 			false, //unconscious, (Optional)
 			"" //selection]; (Optional)
 		]; 
+	if ("autoStart" call BIS_fnc_getParamValue != 0) then //Stop countdown
+	{
+		stopAction = player addAction 
+		[
+			"<t color='#FF0000'>Stop countdown</t>", //title
+			{
+				aStart=0; publicVariable "aStart";
+			}, //script
+			nil, //arguments (Optional)
+			5.9, //priority (Optional)
+			true, //showWindow (Optional)
+			true, //hideOnUse (Optional)
+			"", //shortcut, (Optional) 
+			"aStart==1", //condition,  (Optional)
+			-1, //radius, (Optional)
+			false, //unconscious, (Optional)
+			"" //selection]; (Optional)
+		];
+	};
 	};
 };
 
@@ -78,9 +103,9 @@ if !(isPlayer leader player) then
 	if (progress>1) then
 	{
 		if (AIon==0)
-		then {hint parseText format ["BECOME SQUAD LEADER<br/>(actions menu)<br/><br/>AI units need to be led by the player. Squad will follow you. Allows access to: Squad command | Artillery | CAS | Supply drop | Boat transport | Build fortifications"];}
-		else {hint parseText format ["BECOME SQUAD LEADER<br/>(actions menu)<br/><br/>Recommended. Squad will follow you. Allows access to: Squad command | Artillery | CAS | Supply drop | Boat transport | Build fortifications"];};
-	} else {hint parseText format ["BECOME SQUAD LEADER<br/>(actions menu)<br/><br/>Recommended. Squad will follow you. Allows access to: Squad command | Artillery | CAS | Supply drop | Boat transport | Build fortifications"];};
+		then {hint parseText format ["BECOME SQUAD LEADER<br/>(actions menu)<br/><br/>AI units need to be led by the player. Squad will follow you. Allows access to: Squad command | Artillery | CAS | Air drop | Build fortifications"];}
+		else {hint parseText format ["BECOME SQUAD LEADER<br/>(actions menu)<br/><br/>Recommended. Squad will follow you. Allows access to: Squad command | Artillery | CAS | Air drop | Build fortifications"];};
+	} else {hint parseText format ["BECOME SQUAD LEADER<br/>(actions menu)<br/><br/>Recommended. Squad will follow you. Allows access to: Squad command | Artillery | CAS | Air drop | Build fortifications"];};
 };
 if ("Param2" call BIS_fnc_getParamValue == 1) then{[] call wrm_fnc_arsenal;};
 [player] spawn wrm_fnc_equipment;

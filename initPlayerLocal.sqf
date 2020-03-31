@@ -38,7 +38,20 @@ if ("param2" call BIS_fnc_getParamValue > 0) then
 	] call BIS_fnc_addScriptedEventHandler;
 };
 ["InitializePlayer", [player]] call BIS_fnc_dynamicGroups; // Initializes the player/client side Dynamic Groups framework
+
 //hint, informations for players
+_a="Wait for the admin to create a mission";
+call
+{
+	if("param1" call BIS_fnc_getParamValue == 2)exitWith{_a="MISSION GENERATOR<br/>is available in the action menu";}; //2
+	if(serverCommandAvailable "#kick")exitWith{_a="MISSION GENERATOR<br/>is available in the action menu";}; //0
+	if(("param1" call BIS_fnc_getParamValue == 1)&&(count(allPlayers - entities "HeadlessClient_F")==1))exitWith{_a="MISSION GENERATOR<br/>is available in the action menu";}; //1
+};
+_b="<br/><br/>VIRTUAL ARSENAL<br/>is accessible at the supply box";
+if("param2" call BIS_fnc_getParamValue == 0)then{_b="";}; //2
+
+hint parseText format ["%1%2",_a,_b];
+/*
 if (progress == 0) then
 {
 	call
@@ -53,5 +66,6 @@ if (progress == 0) then
 		then {hint format ["Wait for the admin to create a mission"]};
 	};
 };
+*/
 null = [] execVM "admin\radio.sqf";
 setPlayerRespawnTime 1;

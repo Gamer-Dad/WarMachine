@@ -97,4 +97,5 @@ _unW=[]; _unE=[];
 	];
 } forEach playableunits;
 
-execVM "warmachine\autoStart.sqf" //DEDI use it for dedicated server, if you want mission start automatically
+if ("autoStart" call BIS_fnc_getParamValue != 0) 
+then {[("autoStart" call BIS_fnc_getParamValue)] execVM "warmachine\autoStart.sqf"};

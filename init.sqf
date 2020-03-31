@@ -38,16 +38,16 @@ call
 };
 call
 {
-	if(factionE=="NATO")exitWith{supplyE=["B_supplyCrate_F","B_CargoNet_01_ammo_F"];flgW = "Flag_NATO_F";};
-	if(factionE=="CSAT")exitWith{supplyE=["O_supplyCrate_F","O_CargoNet_01_ammo_F"];flgW = "Flag_CSAT_F";};
-	if(factionE=="AAF")exitWith{supplyE=["I_supplyCrate_F","I_CargoNet_01_ammo_F"];flgW = "Flag_AAF_F";};
-	if(factionE=="LDF")exitWith{supplyE=["I_EAF_supplyCrate_F","I_E_CargoNet_01_ammo_F"];flgW = "Flag_EAF_F";};
-	if(factionE=="USAF")exitWith{supplyE=["rhsusf_weapon_crate"];flgW = "Flag_US_F";};
-	if(factionE=="AFRF")exitWith{supplyE=["rhs_weapon_crate"];flgW = "RHS_Flag_Russia_F";};
-	if(factionE=="Wermacht"||factionE=="Afrikakorps")exitWith{supplyE=["LIB_BasicWeaponsBox_GER"];flgW = "LIB_FlagCarrier_GER";};
-	if(factionE=="UK Army"||factionE=="Desert rats")exitWith{supplyE=["LIB_BasicWeaponsBox_UK"];flgW = "LIB_FlagCarrier_UK";};
-	if(factionE=="Red army")exitWith{supplyE=["LIB_BasicWeaponsBox_SU"];flgW = "LIB_FlagCarrier_SU";};
-	if(factionE=="US Army")exitWith{supplyE=["LIB_BasicWeaponsBox_US"];flgW = "LIB_FlagCarrier_USA";};
+	if(factionE=="NATO")exitWith{supplyE=["B_supplyCrate_F","B_CargoNet_01_ammo_F"];flgE = "Flag_NATO_F";};
+	if(factionE=="CSAT")exitWith{supplyE=["O_supplyCrate_F","O_CargoNet_01_ammo_F"];flgE = "Flag_CSAT_F";};
+	if(factionE=="AAF")exitWith{supplyE=["I_supplyCrate_F","I_CargoNet_01_ammo_F"];flgE = "Flag_AAF_F";};
+	if(factionE=="LDF")exitWith{supplyE=["I_EAF_supplyCrate_F","I_E_CargoNet_01_ammo_F"];flgE = "Flag_EAF_F";};
+	if(factionE=="USAF")exitWith{supplyE=["rhsusf_weapon_crate"];flgE = "Flag_US_F";};
+	if(factionE=="AFRF")exitWith{supplyE=["rhs_weapon_crate"];flgE = "RHS_Flag_Russia_F";};
+	if(factionE=="Wermacht"||factionE=="Afrikakorps")exitWith{supplyE=["LIB_BasicWeaponsBox_GER"];flgE = "LIB_FlagCarrier_GER";};
+	if(factionE=="UK Army"||factionE=="Desert rats")exitWith{supplyE=["LIB_BasicWeaponsBox_UK"];flgE = "LIB_FlagCarrier_UK";};
+	if(factionE=="Red army")exitWith{supplyE=["LIB_BasicWeaponsBox_SU"];flgE = "LIB_FlagCarrier_SU";};
+	if(factionE=="US Army")exitWith{supplyE=["LIB_BasicWeaponsBox_US"];flgE = "LIB_FlagCarrier_USA";};
 };
 
 //OBJECT POOLS-------------------------------------------------------------------------------------------------EDITABLE//

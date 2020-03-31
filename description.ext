@@ -62,17 +62,24 @@ enableDebugConsole = 1; //debug console for admin
 
 //LOBBY PARAMETERS
 titleParam1 = "Who can use MISSION GENERATOR and create mission";
-valuesParam1[] = {0,1};
-defValueParam1 = 0; //DEDI = 0, default = 1
-textsParam1[] = {"Admin and server Host","Anyone"};
+valuesParam1[] = {0,1,2};
+defValueParam1 = 0; //DEDI = 0, default = 2
+textsParam1[] = {"Admin and Server host","Admin, Server host, Client if alone on the server","Anyone"};
 
 titleParam2 = "VIRTUAL ARSENAL";
 valuesParam2[] = {0,1,2};
 defValueParam2 = 1;
-textsParam2[] = {"Disabled","Enabled - Recommended (Filtered by side and combat role)","Enabled -  Full arsenal (No restrictions)"};
+textsParam2[] = {"Disabled","Enabled - Filtered by side and combat role (default)","Enabled -  Full arsenal (No restrictions)"};
 
 class Params
 {
+	class autoStart
+	{
+		title = "Auto Start"; 
+		texts[] = {"Disabled - Default","Delayed - Game start automatically after 3 minutes","Immediate - game start automatically after first player conects"};
+		values[] = {0,1,2};
+		default = 2;
+	};
 	class apexOn
 	{
 		title = "Apex DLC"; 
