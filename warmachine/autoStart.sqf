@@ -76,38 +76,45 @@ progress = 1;  publicVariable "progress";
 [["CREATING MISSION", "BLACK", 3]] remoteExec ["titleText", 0, false];
 sleep 3;
 
-[[
-[], //posCenter, 
-[], //posAlpha, 
-[], //dirAB, 
-[], //posBravo, 
-[], //dirBA, 
-[], //posCharlie, 
-[], //posFobWest, 
-[], //dirCenFobWest, 
-[], //posFobEast, 
-[], //dirCenFobEast, 
-[], //posBaseWest, 
-[], //dirCenBaseWest, 
-[], //posBaseEast, 
-[], //dirCenBaseEast, 
-0, //cExist, 
-0, //AOcreated, 
-2, //missType, (if (missType==0) then {minDis = 500;}; missType/minDis, 0/500, 1/600, 2/700)
-0, //day, 
-2, //secNo, 
-0, //weather, 
-0, //support, 
-0, //fogLevel, 
-2, //resType, 
-1, //resTime, 
-0, //resTickets, 
-2, //vehTime, 
-0, //aoType, 
-700, //minDis, (if (missType==0) then {minDis = 500;}; missType/minDis, 0/500, 1/600, 2/700)
-3, //AIon, 
-0, //revOn, 
-1, //viewType, 
-1, //ticBleed, 
-0 //timeLim
-], "warmachine\start.sqf"] remoteExec ["execVM", 0, false];
+posCenter=[]; 
+posAlpha=[]; 
+dirAB=[]; 
+posBravo=[];  
+dirBA=[];  
+posCharlie=[]; 
+posFobWest=[]; 
+dirCenFobWest=[]; 
+posFobEast=[]; 
+dirCenFobEast=[]; 
+posBaseWest=[]; 
+dirCenBaseWest=[]; 
+posBaseEast=[]; 
+dirCenBaseEast=[];
+cExist=0, 
+AOcreated=0,
+aoType=0; //AO selection method
+minDis = 500; //500 zakladní délka
+
+missType=("asp1" call BIS_fnc_getParamValue); //Mission type
+call
+{
+	if (missType==0) exitWith {minDis = 500;}; 
+	if (missType==1) exitWith {minDis = 600;};
+	if (missType==2) exitWith {minDis = 700;}; 
+};
+secNo=("asp2" call BIS_fnc_getParamValue); //Number of sectors
+support=("asp3" call BIS_fnc_getParamValue); //Combat support
+ticBleed=("asp4" call BIS_fnc_getParamValue); //Ticket bleed
+AIon=("asp5" call BIS_fnc_getParamValue); //Autonomous AI
+timeLim=("asp6" call BIS_fnc_getParamValue); //Time limit
+day=("asp7" call BIS_fnc_getParamValue); //Time of day
+weather=("asp8" call BIS_fnc_getParamValue); //Weather
+fogLevel=("asp9" call BIS_fnc_getParamValue); //Fog
+viewType=("asp10" call BIS_fnc_getParamValue); //3rd person view
+revOn=("asp11" call BIS_fnc_getParamValue); //Revive
+resType=("asp12" call BIS_fnc_getParamValue); //Respawn type
+resTickets=("asp13" call BIS_fnc_getParamValue); //Respawn tickets
+resTime=("asp14" call BIS_fnc_getParamValue); //Player respawn time
+vehTime=("asp15" call BIS_fnc_getParamValue); //Vehicles respawn time
+
+[[posCenter, posAlpha, dirAB, posBravo, dirBA, posCharlie, posFobWest, dirCenFobWest, posFobEast, dirCenFobEast, posBaseWest, dirCenBaseWest, posBaseEast, dirCenBaseEast, cExist, AOcreated, missType, day, secNo, weather, support, fogLevel, resType, resTime, resTickets, vehTime, aoType, minDis, AIon, revOn, viewType, ticBleed, timeLim], "warmachine\start.sqf"] remoteExec ["execVM", 0, false];

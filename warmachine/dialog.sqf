@@ -84,7 +84,7 @@ _menu42 =
 [
 	["Base, Fob","Respawn is available only on the BASE and FOB"],
 	["Base, Fob, Sectors","Respawn is available on the BASE, FOB and on the captured SECTORS"],
-	["Base, Fob, Sectors, Squad,","Respawn is available on the BASE, FOB, captured SECTORS and SQUAD position"]
+	["Base, Fob, Sectors, Squad","Respawn is available on the BASE, FOB, captured SECTORS and SQUAD position"]
 ];
 //Revive
 _menu51 = 

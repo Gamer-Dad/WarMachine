@@ -51,21 +51,6 @@ _b="<br/><br/>VIRTUAL ARSENAL<br/>is accessible at the supply box";
 if("param2" call BIS_fnc_getParamValue == 0)then{_b="";}; //2
 
 hint parseText format ["%1%2",_a,_b];
-/*
-if (progress == 0) then
-{
-	call
-	{
-		if ((serverCommandAvailable "#kick" || "param1" call BIS_fnc_getParamValue == 1) && "param2" call BIS_fnc_getParamValue > 0) 
-		then {hint parseText format ["MISSION GENERATOR<br/>is available in the action menu<br/><br/>VIRTUAL ARSENAL<br/>is accessible at the supply box"]};
-		if (!(serverCommandAvailable "#kick" ||"param1" call BIS_fnc_getParamValue == 1) && "param2" call BIS_fnc_getParamValue > 0) 
-		then {hint parseText format ["VIRTUAL ARSENAL<br/>is accessible at the supply box<br/><br/>Wait for the admin to create a mission"]};
-		if ((serverCommandAvailable "#kick" || "param1" call BIS_fnc_getParamValue == 1) && "param2" call BIS_fnc_getParamValue == 0) 
-		then {hint parseText format ["MISSION GENERATOR<br/>is available in the action menu"]};
-		if (!(serverCommandAvailable "#kick" || "param1" call BIS_fnc_getParamValue == 1) && "param2" call BIS_fnc_getParamValue == 0) 
-		then {hint format ["Wait for the admin to create a mission"]};
-	};
-};
-*/
+
 null = [] execVM "admin\radio.sqf";
 setPlayerRespawnTime 1;

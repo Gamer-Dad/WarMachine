@@ -719,20 +719,32 @@ if ((planes==1)||((planes==2)&&(plHW==plH1||plHW==plH2)&&(plHe==plH1||plHe==plH2
 		_pPosW = getPos plHw;
 		_pVehW = _pSelW createVehicle _pPosW;
 		_pVehW setDir getDir plHw;
-		[_pVehW,arTime,arTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+		[_pVehW,arTime,arTime,-1,[{
+			params ["_veh"];
+			_veh allowDammage false;
+			_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh;}];
+		},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 		["pArW",0,_pPosW,"plane"] remoteExec ["wrm_fnc_vehMrkW", 0, true];
 		[sideW, (plHW getRelPos [25, 270]), "Runway"] call BIS_fnc_addRespawnPosition; 
 		z1 addCuratorEditableObjects [[_pVehW],true];	
+		_pVehW allowDammage false;
+		_pVehW addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh;}];
 		
 		//plane east
 		_pSelE = selectRandom PlaneE;
 		_pPosE = getPos plHe;
 		_pVehE = _pSelE createVehicle _pPosE;
 		_pVehE setDir getDir plHe;
-		[_pVehE,arTime,arTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+		[_pVehE,arTime,arTime,-1,[{
+			params ["_veh"];
+			_veh allowDammage false;
+			_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];		
+		},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 		["pArE",0,_pPosE,"plane"] remoteExec ["wrm_fnc_vehMrkE", 0, true];
 		[sideE, (plHE getRelPos [25, 270]), "Runway"] call BIS_fnc_addRespawnPosition; 
 		z1 addCuratorEditableObjects [[_pVehE],true];
+		_pVehE allowDammage false;
+		_pVehE addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];
 	};
 };
 //TRANSPORT
@@ -750,9 +762,15 @@ if (count HeliTrW>0) then
 	_hVehW = _hSelW createVehicle _hPosW;
 	_hVehW setDir (dirCenBaseWest+180);
 	_hVehW setVectorUp surfaceNormal position _hVehW;
-	[_hVehW,trTime,trTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+	[_hVehW,trTime,trTime,-1,[{
+		params ["_veh"];
+		_veh allowDammage false;
+		_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh;}];	
+	},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 	["hTrW",0,_hPosW,"air"] remoteExec ["wrm_fnc_vehMrkW", 0, true];
 	z1 addCuratorEditableObjects [[_hVehW],true];
+	_hVehW allowDammage false;
+	_hVehW addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh;}];
 	deleteMarkerLocal "mbw";
 };
 //attack heli
@@ -771,9 +789,15 @@ if (missType == 2) then
 		_hVehW = _hSelW createVehicle _hPosW;
 		_hVehW setDir (dirCenBaseWest+180);
 		_hVehW setVectorUp surfaceNormal position _hVehW;
-		[_hVehW,arTime,arTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+		[_hVehW,arTime,arTime,-1,[{
+			params ["_veh"];
+			_veh allowDammage false;
+			_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh;}];
+		},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 		["hArW",0,_hPosW,"air"] remoteExec ["wrm_fnc_vehMrkW", 0, true];
 		z1 addCuratorEditableObjects [[_hVehW],true];
+		_hVehW allowDammage false;
+		_hVehW addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh;}];
 		deleteMarkerLocal "mbw";
 	};
 };
@@ -791,9 +815,15 @@ if (count HeliTrE>0) then
 	_hVehE = _hSelE createVehicle _hPosE;
 	_hVehE setDir (dirCenBaseEast+180);
 	_hVehE setVectorUp surfaceNormal _hPosE;
-	[_hVehE,trTime,trTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+	[_hVehE,trTime,trTime,-1,[{
+		params ["_veh"];
+		_veh allowDammage false;
+		_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];
+	},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 	["hTrE",0,_hPosE,"air"] remoteExec ["wrm_fnc_vehMrkE", 0, true];
 	z1 addCuratorEditableObjects [[_hVehE],true];
+	_hVehE allowDammage false;
+	_hVehE addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];
 	deleteMarkerLocal "mbe";
 };
 //attack heli
@@ -812,9 +842,15 @@ if (missType == 2) then
 		_hVehE = _hSelE createVehicle _hPosE;
 		_hVehE setDir (dirCenBaseEast+180);
 		_hVehE setVectorUp surfaceNormal _hPosE;
-		[_hVehE,arTime,arTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+		[_hVehE,arTime,arTime,-1,[{
+			params ["_veh"];
+			_veh allowDammage false;
+			_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];		
+		},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 		["hArE",0,_hPosE,"air"] remoteExec ["wrm_fnc_vehMrkE", 0, true];
 		z1 addCuratorEditableObjects [[_hVehE],true];
+		_hVehE allowDammage false;
+		_hVehE addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];		
 		deleteMarkerLocal "mbe";
 	};
 };
@@ -855,9 +891,15 @@ _vehBaseTrE = [BikeE, CarE, CarArE, TruckE];
 	[vehW,[_tex,1]] call bis_fnc_initVehicle;
 	vehW setDir (dirCenBaseWest+180);
 	vehW setVectorUp surfaceNormal _vPos;
-	[vehW,trTime,trTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+	[vehW,trTime,trTime,-1,[{
+		params ["_veh"];
+		_veh allowDammage false;
+		_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh}];
+	},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 	["vBaW",_indx,_vPos,"unknown"] remoteExec ["wrm_fnc_vehMrkW", 0, true];
 	z1 addCuratorEditableObjects [[vehW],true];
+	vehW allowDammage false;
+	vehW addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh;}];
 } forEach _vehBaseTrW;
 	
 //create FOB east vehicles
@@ -889,9 +931,15 @@ _vehBaseTrE = [BikeE, CarE, CarArE, TruckE];
 	[vehE,[_tex,1]] call bis_fnc_initVehicle;
 	vehE setDir (dirCenBaseEast+180);
 	vehE setVectorUp surfaceNormal _vPos;
-	[vehE,trTime,trTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+	[vehE,trTime,trTime,-1,[{
+		params ["_veh"];
+		_veh allowDammage false;
+		_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];	
+	},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 	["vBaE",_indx,_vPos,"unknown"] remoteExec ["wrm_fnc_vehMrkE", 0, true];
 	z1 addCuratorEditableObjects [[vehE],true];
+	vehE allowDammage false;
+	vehE addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];	
 } forEach _vehBaseTrE;
 
 //ARMORS
@@ -909,9 +957,16 @@ if (missType>0) then
 	[armW,[_tex,1]] call bis_fnc_initVehicle;
 	armW setDir (dirCenBaseWest+180);
 	armW setVectorUp surfaceNormal _vPos;
-	[armW,arTime,arTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+	[armW,arTime,arTime,-1,[{
+		params ["_veh"];
+		_veh allowDammage false;
+		_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh;}];	
+	},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 	["vArW",1,_vPos,"armor"] remoteExec ["wrm_fnc_vehMrkW", 0, true];
 	z1 addCuratorEditableObjects [[armW],true];
+		armW allowDammage false;
+		armW addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh;}];	
+	
 	//TANK west
 	_vSel = selectRandom ArmorW2;
 	_typ="";_tex="";
@@ -922,9 +977,16 @@ if (missType>0) then
 	[_veh,[_tex,1]] call bis_fnc_initVehicle;
 	_veh setDir (dirCenBaseWest+180);
 	_veh setVectorUp surfaceNormal _vPos;
-	[_veh,arTime,arTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+	[_veh,arTime,arTime,-1,[{
+		params ["_veh"];
+		_veh allowDammage false;
+		_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh;}];	
+	},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 	["vArW",0,_vPos,"armor"] remoteExec ["wrm_fnc_vehMrkW", 0, true];
 	z1 addCuratorEditableObjects [[_veh],true];
+	_veh allowDammage false;
+	_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseWest] spawn wrm_fnc_safeZoneVeh;}];	
+	
 	//APC east
 	_vSel = selectRandom ArmorE1;
 	_typ="";_tex="";
@@ -935,9 +997,16 @@ if (missType>0) then
 	[armE,[_tex,1]] call bis_fnc_initVehicle;
 	armE setDir (dirCenBaseEast+180);
 	armE setVectorUp surfaceNormal _vPos;
-	[armE,arTime,arTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+	[armE,arTime,arTime,-1,[{
+		params ["_veh"];
+		_veh allowDammage false;
+		_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];	
+	},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 	["vArE",1,_vPos,"armor"] remoteExec ["wrm_fnc_vehMrkE", 0, true];
 	z1 addCuratorEditableObjects [[armE],true];
+	armE allowDammage false;
+	armE addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];	
+	
 	//TANK east
 	_vSel = selectRandom ArmorE2;
 	_typ="";_tex="";
@@ -948,9 +1017,15 @@ if (missType>0) then
 	[_veh,[_tex,1]] call bis_fnc_initVehicle;
 	_veh setDir (dirCenBaseEast+180);
 	_veh setVectorUp surfaceNormal _vPos;
-	[_veh,arTime,arTime,-1,[{},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
+	[_veh,arTime,arTime,-1,[{
+		params ["_veh"];
+		_veh allowDammage false;
+		_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];	
+	},[]],0,1,1,true] call BIS_fnc_moduleRespawnVehicle;
 	["vArE",0,_vPos,"armor"] remoteExec ["wrm_fnc_vehMrkE", 0, true];
 	z1 addCuratorEditableObjects [[_veh],true];
+	_veh allowDammage false;
+	_veh addEventHandler ["GetIn", {params ["_veh"]; [_veh,posBaseEast] spawn wrm_fnc_safeZoneVeh;}];	
 };
 
 systemChat "Vehicles created"; //debug
@@ -979,15 +1054,6 @@ _posSuppW = plHW getRelPos [20, 90];
 _posSuppE = plHE getRelPos [20, 90];
 {_x setPos _posSuppW;} forEach _supportW;
 {_x setPos _posSuppE;} forEach _supportE;
-/*
-//Transport, Supply synchronize with requester
-if (support == 0 || support == 1) then
-{
-	//[SupReqW, SupHeliW] remoteExec ["BIS_fnc_addSupportLink", 0, true];
-	[SupReqW, SupDropW] remoteExec ["BIS_fnc_addSupportLink", 0, true];
-	//[SupReqE, SupHeliE] remoteExec ["BIS_fnc_addSupportLink", 0, true];
-	[SupReqE, SupDropE] remoteExec ["BIS_fnc_addSupportLink", 0, true];
-};*/
 sleep 1;
 
 //teleports playable units to the BASE, players will respawn------------------------------SERVER//

@@ -149,29 +149,34 @@ if ("Param2" call BIS_fnc_getParamValue == 1) then
 	[AmmoE,sideE] call wrm_fnc_arsInit;
 };
 
-if ("apexOn" call BIS_fnc_getParamValue == 0) then 
+_mod=0;
+if(isClass(configFile >> "CfgPatches" >> "rhs_main"))then{_mod=1;}; //RHS mod
+if(isClass(configFile >> "CfgPatches" >> "LIB_core"))then{_mod=1;}; //IFA3 mod
+if(_mod==0)then
 {
-	CarW = CarW + CarDlcW;
-	CarArW = CarArW + CarArDlcW;
-	CarE = CarE + CarDlcE;
-	CarArE = CarArE + CarArDlcE;
-};
+	if ("apexOn" call BIS_fnc_getParamValue == 0) then 
+	{
+		CarW = CarW + CarDlcW;
+		CarArW = CarArW + CarArDlcW;
+		CarE = CarE + CarDlcE;
+		CarArE = CarArE + CarArDlcE;
+	};
 
-if ("heliOn" call BIS_fnc_getParamValue == 0) then 
-{
-	HeliTrE = HeliTrE + HeliTrDlcE;
-};
+	if ("heliOn" call BIS_fnc_getParamValue == 0) then 
+	{
+		HeliTrE = HeliTrE + HeliTrDlcE;
+	};
 
-if ("jetsOn" call BIS_fnc_getParamValue == 0) then 
-{
-	PlaneW = PlaneW + PlaneDlcW;
-	PlaneE = PlaneE + PlaneDlcE;
+	if ("jetsOn" call BIS_fnc_getParamValue == 0) then 
+	{
+		PlaneW = PlaneW + PlaneDlcW;
+		PlaneE = PlaneE + PlaneDlcE;
+	};
+	if ("TankOn" call BIS_fnc_getParamValue == 0) then 
+	{
+		ArmorW2 = ArmorW2 + ArmorDlcW2;
+		ArmorE2 = ArmorE2 + ArmorDlcE2;
+	};
 };
-if ("TankOn" call BIS_fnc_getParamValue == 0) then 
-{
-	ArmorW2 = ArmorW2 + ArmorDlcW2;
-	ArmorE2 = ArmorE2 + ArmorDlcE2;
-};
-
 //ADD BRIEFING [briefing.sqf]
 call compile preProcessFileLineNumbers "diary.sqf";

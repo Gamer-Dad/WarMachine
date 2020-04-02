@@ -63,33 +63,276 @@ enableDebugConsole = 1; //debug console for admin
 //LOBBY PARAMETERS
 titleParam1 = "Who can use MISSION GENERATOR and create mission";
 valuesParam1[] = {0,1,2};
-defValueParam1 = 0; //DEDI = 0, default = 2
-textsParam1[] = {"Admin and Server host","Admin, Server host, Client if alone on the server","Anyone"};
+defValueParam1 = 2; //DEDI = 0, default = 2
+textsParam1[] = 
+{
+	"Admin and Server host",
+	"Admin, Server host, Client if alone on the server",
+	"Anyone"
+};
 
 titleParam2 = "VIRTUAL ARSENAL";
 valuesParam2[] = {0,1,2};
 defValueParam2 = 1;
-textsParam2[] = {"Disabled","Enabled - Filtered by side and combat role (default)","Enabled -  Full arsenal (No restrictions)"};
+textsParam2[] = 
+{
+	"Disabled",
+	"Enabled - Filtered by side and combat role (default)",
+	"Enabled -  Full arsenal (No restrictions)"
+};
 
 class Params
-{
+{	
 	class autoStart
 	{
-		title = "Auto Start"; 
-		texts[] = {"Disabled - Default","Delayed - Game start automatically after 3 minutes","Immediate - game start automatically after first player conects"};
+		title = "AUTO START"; 
+		texts[] = 
+		{
+			"Disabled - Default","Delayed - Game start automatically after 3 minutes",
+			"Immediate - game start automatically after first player conects"
+		};
+		values[] = {0,1,2};
+		default = 0;
+	};
+	class EmtpyLine1
+	{
+		title = " ";
+		values[]={0,0};
+		texts[]={"",""};
+		default = 0;
+	}
+	class EmtpyLine2
+	{
+		title = "AUTO START PARAMETERS";
+		values[]={0,0};
+		texts[]={"",""};
+		default = 0;
+	};	
+	class asp1 //Mission type
+	{
+		title = "   - Mission type               What types of the vehicles will be avliable - AO size"; 
+		texts[] = 
+		{
+			"Infantry mission - Infantry, light vehicles - AO small",
+			"Combined ground forces - Infantry, light vehicles, armors, transport helicopter - AO medium",
+			"Full spectrum warfare - Infantry, light vehicles, armors, transport helicopter, gunship, jet - AO large"
+		};
+		values[] = {0,1,2};
+		default = 2;
+	};	
+	class asp2 //Number of sectors
+	{
+		title = "   - Number of sectors               Holding majority of the sectors reduces opponents respawn tickets"; 
+		texts[] = 
+		{
+			"1 - Alpha",
+			"2 - Alpha, Bravo",
+			"3 - Alpha, Bravo, Charlie"
+		};
 		values[] = {0,1,2};
 		default = 2;
 	};
+	class asp3 //Combat support
+	{
+		title = "   - Combat support               CAS and Artilery. Combat support is available for the squad leaders as a reward after capturing sectors"; 
+		texts[] = 
+		{
+			"Enabled - Artillery or CAS after capturing a sector. Available every 20 minutes.",
+			"Disabled - No combat support"
+		};
+		values[] = {0,1};
+		default = 0;
+	};
+	class asp4 //Ticket bleed
+	{
+		title = "   - Ticket bleed               Reduces enemy tickets by holding majority of the sectors / capturing FOB"; 
+		texts[] = 
+		{
+			"Disabled - Relax, make a plan",
+			"Enabled - Hurry up, rush for the objectives"
+		};
+		values[] = {0,1};
+		default = 1;
+	};
+	class asp5 //Autonomous AI
+	{
+		title = "   - Autonomous AI               All AI units will join the battle and attack objectives"; 
+		texts[] = 
+		{
+			"Disabled - Only AI units lead by the player join the battle",
+			"Infantry only - AI units don't use vehicles autonomously",
+			"Vehicles & Infantry - AI vehicles spawn on the mission start",
+			"Continuous support - balanced - AI vehicles spawn continuously for both sides",
+			"Continuous support - challenging - In coop AI vehicles spawn continuously on the enemy side",
+			"Vehicles & Infantry - 2 - AI vehicles spawn on the mission start. At the beginning AI units board the vehicles at the BASE",
+			"Continuous support 2 - balanced - AI vehicles spawn continuously for both sides. At the beginning AI units board the vehicles at the BASE",
+			"Continuous support 2 - challenging - In coop AI vehicles spawn continuously. At the beginning AI units board the vehicles at the BASE"
+		};
+		values[] = {0,1,2,3,4,5,6,7};
+		default = 3;
+	};
+	class asp6 //Time limit
+	{
+		title = "   - Time limit               Maximal duration of the game"; 
+		texts[] = 
+		{
+			"Disabled - Recommended to enable Ticket bleed",
+			"45 min",
+			"60 min",
+			"75 min",
+			"75 min"
+		};
+		values[] = {0,1,2,3,4};
+		default = 0;
+	};	
+	class asp7 //Time of day
+	{
+		title = "   - Time of day"; 
+		texts[] = 
+		{
+			"Random",
+			"Dawn",
+			"Morning",
+			"Noon",
+			"Afternoon",
+			"Dusk",
+			"Night"
+		};
+		values[] = {0,1,2,3,4,5,6};
+		default = 0;
+	};
+	class asp8 //Weather
+	{
+		title = "   - Weather"; 
+		texts[] = 
+		{
+			"Random - Weather is selected randomly",
+			"Clear - Clear sky, no rain",
+			"Cloudy - Overcast, probability of rain",
+			"Rain - Overcast and rain",
+			"Storm - Overcast and storm"
+		};
+		values[] = {0,1,2,3,4};
+		default = 0;
+	};
+	class asp9 //Fog
+	{
+		title = "   - Fog"; 
+		texts[] = 
+		{
+			"Random - Fog is selected randomly",
+			"Yes - Lower visibility",
+			"No - Good visibility"
+		};
+		values[] = {0,1,2};
+		default = 0;
+	};
+	class asp10 //3rd person view
+	{
+		title = "   - Third person view for player"; 
+		texts[] = 
+		{
+			"Enabled - Third person view available",
+			"Only in the vehicle - Battlefield style",
+			"Disabled - Recommended for tough guys"
+		};
+		values[] = {0,1,2};
+		default = 1;
+	};
+	class asp11 //Revive
+	{
+		title = "   - Revive               Possibility to revive player"; 
+		texts[] = 
+		{
+			"Enabled - Players can be revived, FAK or Medkit is required",
+			"Disabled - No revive"
+		};
+		values[] = {0,1};
+		default = 0;
+	};
+	class asp12 //Respawn type
+	{
+		title = "   - Respawn type               Where player can respawn"; 
+		texts[] = 
+		{
+			"Base, Fob - Respawn is available only on the BASE and FOB",
+			"Base, Fob, Sectors - Respawn is available on the BASE, FOB and on the captured SECTORS",
+			"Base, Fob, Sectors, Squad - Respawn is available on the BASE, FOB, captured SECTORS and SQUAD position"
+		};
+		values[] = {0,1,2};
+		default = 2;
+	};
+	class asp13 //Respawn tickets
+	{
+		title = "   - Respawn tickets               Amount of the available respawns fo each side"; 
+		texts[] = 
+		{
+			"Auto adjust - Based on the number of players and AI",
+			"50",
+			"100",
+			"150",
+			"200",
+			"250",
+			"300",
+			"400",
+			"500",
+			"600"
+		};
+		values[] = {0,1,2,3,4,5,6,7,8,9};
+		default = 0;
+	};
+	class asp14 //Player respawn time
+	{
+		title = "   - Player respawn time"; 
+		texts[] = 
+		{
+			"5 sec - Instant respawn",
+			"30 sec - Default",
+			"60 sec - Normal",
+			"120 sec - Long respawn",
+			"180 sec - Go for a coffee"
+		};
+		values[] = {0,1,2,3,4};
+		default = 1;
+	};
+	class asp15 //Vehicles respawn time
+	{
+		title = "   - Vehicles respawn time               Unarmed tansport vehicles / Armed vehicles"; 
+		texts[] = 
+		{
+			"30/90 sec - Armor madness",
+			"1/3 min - Fast respawn",
+			"3/9 min - Default",
+			"5/15 min - Long respawn",
+			"10/30 min - Once upon a time, there was a tank"
+		};
+		values[] = {0,1,2,3,4};
+		default = 2;
+	};
+	class EmtpyLine3
+	{
+		title = " ";
+		values[]={0,0};
+		texts[]={"",""};
+		default = 0;
+	};
+	class EmtpyLine4
+	{
+		title = "DLC - Only for default Arma 3";
+		values[]={0,0};
+		texts[]={"",""};
+		default = 0;
+	};
 	class apexOn
 	{
-		title = "Apex DLC"; 
+		title = "   - Apex DLC"; 
 		texts[] = {"Yes","No"};
 		values[] = {0,1};
 		default = 0;
 	};
 	class markOn
 	{
-		title = "Marksmen DLC";
+		title = "   - Marksmen DLC";
 		texts[] = {"Yes","No"};
 		values[] = {0,1};
 		default = 0;
@@ -97,21 +340,21 @@ class Params
 
 	class heliOn
 	{
-		title = "Helicopters DLC";
+		title = "   - Helicopters DLC";
 		texts[] = {"Yes","No"};
 		values[] = {0,1};
 		default = 0;
 	};
 	class jetsOn
 	{
-		title = "Jets DLC";
+		title = "   - Jets DLC";
 		texts[] = {"Yes","No"};
 		values[] = {0,1};
 		default = 0;
 	};
 	class TankOn
 	{
-		title = "Tanks DLC";
+		title = "   - Tanks DLC";
 		texts[] = {"Yes","No"};
 		values[] = {0,1};
 		default = 0;

@@ -31,9 +31,9 @@ pltW=[]; publicvariable "pltW";
 pltE=[]; publicvariable "pltE";
 
 //RESPAWN LOADOUTS-----------------------------------------------EDITABLE//
-for "_i" from 1 to 41 step 1 do 
+for "_i" from 1 to 41 step 1 do //EDIT
 {[west, [format ["WEST%1", _i],0,6]] call BIS_fnc_addRespawnInventory;};
-for "_i" from 1 to 41 step 1 do 
+for "_i" from 1 to 41 step 1 do //EDIT
 {[east, [format ["EAST%1", _i],0,6]] call BIS_fnc_addRespawnInventory;};
 
 //LOBBY PARAMETERS
@@ -41,27 +41,28 @@ for "_i" from 1 to 41 step 1 do
 call
 {
 	if ("Param2" call BIS_fnc_getParamValue == 0) 
-	exitWith {deleteVehicle wAmmo; deleteVehicle eAmmo;};
+	exitWith {deleteVehicle wAmmo; deleteVehicle eAmmo;}; //EDIT
 	if ("Param2" call BIS_fnc_getParamValue == 1) 
-	exitWith{["AmmoboxInit",wAmmo] spawn BIS_fnc_arsenal; ["AmmoboxInit",eAmmo] spawn BIS_fnc_arsenal;};
+	exitWith{["AmmoboxInit",wAmmo] spawn BIS_fnc_arsenal; ["AmmoboxInit",eAmmo] spawn BIS_fnc_arsenal;}; //EDIT
 	if ("Param2" call BIS_fnc_getParamValue == 2) 
-	exitWith{["AmmoboxInit",[wAmmo,true]] spawn BIS_fnc_arsenal; ["AmmoboxInit",[eAmmo,true]] spawn BIS_fnc_arsenal;};
+	exitWith{["AmmoboxInit",[wAmmo,true]] spawn BIS_fnc_arsenal; ["AmmoboxInit",[eAmmo,true]] spawn BIS_fnc_arsenal;}; //EDIT
 };
-//use it for defauld Arma 3 desert camo, NO Tanoa (altis, stratis a malden)
-//marksmen DLC
+
+//marksmen DLC / defauld Arma 3, desert, woodland (altis, stratis, malden, livonia)
 if ("markOn" call BIS_fnc_getParamValue == 0) then 
 {
-	for "_i" from 42 to 47 step 1 do 
+	for "_i" from 42 to 47 step 1 do //EDIT
 	{[west, [format ["WEST%1", _i],0,6]] call BIS_fnc_addRespawnInventory;};
-	for "_i" from 42 to 47 step 1 do 
+	for "_i" from 42 to 47 step 1 do //EDIT
 	{[east, [format ["EAST%1", _i],0,6]] call BIS_fnc_addRespawnInventory;};
 };
-//tanks DLC
+
+//tanks DLC / defauld Arma 3, desert, jungle (altis, stratis, malden, tanoa)
 if ("TankOn" call BIS_fnc_getParamValue == 0) then 
 {
-	for "_i" from 48 to 48 step 1 do 
+	for "_i" from 48 to 48 step 1 do //EDIT
 	{[west, [format ["WEST%1", _i],0,6]] call BIS_fnc_addRespawnInventory;};
-	for "_i" from 48 to 49 step 1 do 
+	for "_i" from 48 to 49 step 1 do //EDIT
 	{[east, [format ["EAST%1", _i],0,6]] call BIS_fnc_addRespawnInventory;};
 };
 

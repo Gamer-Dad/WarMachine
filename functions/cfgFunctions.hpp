@@ -32,7 +32,8 @@ class wrm
 		class airDrop {};
 		class fortification {};
 		class pushVeh {};
-		class safeZone {};
 		class flipVeh {};
+		class safeZone {};
+		class safeZoneVeh {};
 	};
 };
