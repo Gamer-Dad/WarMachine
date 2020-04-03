@@ -63,7 +63,7 @@ enableDebugConsole = 1; //debug console for admin
 //LOBBY PARAMETERS
 titleParam1 = "Who can use MISSION GENERATOR and create mission";
 valuesParam1[] = {0,1,2};
-defValueParam1 = 2; //DEDI = 0, default = 2
+defValueParam1 = 0; //DEDI = 0, default = 2
 textsParam1[] = 
 {
 	"Admin and Server host",
@@ -92,7 +92,7 @@ class Params
 			"Immediate - game start automatically after first player conects"
 		};
 		values[] = {0,1,2};
-		default = 0;
+		default = 1;
 	};
 	class EmtpyLine1
 	{
@@ -141,7 +141,7 @@ class Params
 			"Disabled - No combat support"
 		};
 		values[] = {0,1};
-		default = 0;
+		default = 1;
 	};
 	class asp4 //Ticket bleed
 	{
@@ -169,7 +169,7 @@ class Params
 			"Continuous support 2 - challenging - In coop AI vehicles spawn continuously. At the beginning AI units board the vehicles at the BASE"
 		};
 		values[] = {0,1,2,3,4,5,6,7};
-		default = 3;
+		default = 2;
 	};
 	class asp6 //Time limit
 	{
@@ -199,7 +199,7 @@ class Params
 			"Night"
 		};
 		values[] = {0,1,2,3,4,5,6};
-		default = 0;
+		default = 3;
 	};
 	class asp8 //Weather
 	{
@@ -213,7 +213,7 @@ class Params
 			"Storm - Overcast and storm"
 		};
 		values[] = {0,1,2,3,4};
-		default = 0;
+		default = 2;
 	};
 	class asp9 //Fog
 	{
@@ -225,7 +225,7 @@ class Params
 			"No - Good visibility"
 		};
 		values[] = {0,1,2};
-		default = 0;
+		default = 2;
 	};
 	class asp10 //3rd person view
 	{
@@ -237,7 +237,7 @@ class Params
 			"Disabled - Recommended for tough guys"
 		};
 		values[] = {0,1,2};
-		default = 1;
+		default = 0;
 	};
 	class asp11 //Revive
 	{
@@ -307,7 +307,7 @@ class Params
 			"10/30 min - Once upon a time, there was a tank"
 		};
 		values[] = {0,1,2,3,4};
-		default = 2;
+		default = 3;
 	};
 	class EmtpyLine3
 	{
