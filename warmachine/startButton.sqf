@@ -41,9 +41,9 @@ dSel = 1;
 //control of DIALOG selections
 if (progress >= 1) exitWith {};
 if (aoType!=0 && AOcreated==0) exitWith {hint parseText format ["SELECT AREA OF OPERATION<br/><br/>Press button SELECT AREA OF OPERATION and select a position on the map"];};
-if (aoType!=0 && minDis==500 && missType!=0) exitWith {hint parseText format ["Mission type was changed<br/><br/>Select INFANTRY MISSION<br/>in the Mission type menu<br/>or SELECT AREA OF OPERATION again"]};
-if (aoType!=0 && minDis==600 && missType!=1) exitWith {hint parseText format ["Mission type was changed<br/><br/>Select COMBINED GROUND FORCES<br/>in the Mission type menu<br/>or SELECT AREA OF OPERATION again"]};
-if (aoType!=0 && minDis==700 && missType!=2) exitWith {hint parseText format ["Mission type was changed<br/><br/>Select FULL SPECTRUM WARFARE<br/>in the Mission type menu<br/>or SELECT AREA OF OPERATION again"]};
+if (aoType!=0 && minDis==500 && missType!=1) exitWith {hint parseText format ["Mission type was changed<br/><br/>Select INFANTRY MISSION<br/>in the Mission type menu<br/>or SELECT AREA OF OPERATION again"]};
+if (aoType!=0 && minDis==600 && missType!=2) exitWith {hint parseText format ["Mission type was changed<br/><br/>Select COMBINED GROUND FORCES<br/>in the Mission type menu<br/>or SELECT AREA OF OPERATION again"]};
+if (aoType!=0 && minDis==700 && missType!=3) exitWith {hint parseText format ["Mission type was changed<br/><br/>Select FULL SPECTRUM WARFARE<br/>in the Mission type menu<br/>or SELECT AREA OF OPERATION again"]};
 if (aoType!=0 && secNo==0 && bExist==1) exitWith {hint parseText format ["Number of sectors was changed<br/><br/>Change number of sectors in the menu to 2 or 3<br/>or SELECT AREA OF OPERATION again"]};
 if (aoType!=0 && secNo>0 && bExist==0) exitWith {hint parseText format ["Number of sectors was changed<br/><br/>Change number of sectors in the menu to 1<br/>or SELECT AREA OF OPERATION again"]};
 

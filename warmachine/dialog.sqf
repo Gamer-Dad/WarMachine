@@ -23,6 +23,7 @@ disableSerialization;
 //Mission type
 _menu11 = 
 [
+	["Random","Mission type is selected randomly"],
 	["Infantry mission","Infantry, light vehicles - AO small"],
 	["Combined ground forces","Infantry, light vehicles, armors, transport helicopter - AO medium"],
 	["Full spectrum warfare","Infantry, light vehicles, armors, transport helicopter, gunship, jet - AO large"]
@@ -216,7 +217,7 @@ if (dSel == 0) then
 		else{_cmb61 lbSetCurSel 1;_vi="<br/>3rd person view available only in the vehicle";};
 	}else{_cmb61 lbSetCurSel 0;};
 
-	_cmb11 lbSetCurSel 2; //Mission type
+	_cmb11 lbSetCurSel 3; //Mission type
 	_cmb12 lbSetCurSel 0; //Time of day
 	_cmb21 lbSetCurSel 2; //Number of sectors
 	_cmb22 lbSetCurSel 0; //Weather

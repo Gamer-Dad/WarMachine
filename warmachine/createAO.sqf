@@ -17,11 +17,12 @@
 	Execution:
 		[] execVM "warmachine\createAO.sqf";
 */
+if (missType == 0) then {missType = selectRandom [1,2,3]};
 call
 {
-	if (missType == 0) exitWith {minDis = 500;}; //500 = zakladní délka
-	if (missType == 1) exitWith {minDis = 600;};
-	if (missType == 2) exitWith {minDis = 700;}; 
+	if (missType == 1) exitWith {minDis = 500;}; //500 = zakladní délka
+	if (missType == 2) exitWith {minDis = 600;};
+	if (missType == 3) exitWith {minDis = 700;}; 
 };
 
 aCreated = 0;

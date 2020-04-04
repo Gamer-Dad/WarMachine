@@ -100,7 +100,7 @@ if (progress == 2) then //fight for SECTORS
 		if (AIon==3||Aion==5)then
 		{
 			_n=3;
-			if(missType==2)then{_n=4;};
+			if(missType==3)then{_n=4;};
 			call
 			{
 				if(vehTime==0)exitWith{tic=tic+(60*_n);};
@@ -149,7 +149,7 @@ if (progress == 2) then //fight for SECTORS
 		{
 			if((AIon==3||AIon==4||AIon==6||AIon==7)&&(alive (leader gApcW))&&((vehicle leader gApcW)!=(leader gApcW)))exitWith{};
 			_types=[];
-			if(missType>0)
+			if(missType>1)
 			then{_types = selectRandom [ArmorW1,ArmorW2];}
 			else{_types = CarArW;};
 			
@@ -171,7 +171,7 @@ if (progress == 2) then //fight for SECTORS
 		{
 			if((AIon==3||AIon==4||AIon==6||AIon==7)&&(alive (leader gApcE))&&((vehicle leader gApcE)!=(leader gApcE)))exitWith{};
 			_types=[];
-			if(missType>0)
+			if(missType>1)
 			then{_types = selectRandom [ArmorE1,ArmorE2];}
 			else{_types = CarArE;};
 			

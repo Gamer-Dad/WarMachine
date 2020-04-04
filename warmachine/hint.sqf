@@ -51,9 +51,9 @@ _ars = "";
 
 call //Mission type
 {
-	if (missType == 0) exitWith {_mType = "INFANTRY MISSION";};
-	if (missType == 1) exitWith {_mType = "COMBINED GROUND FORCES";};
-	if (missType == 2) exitWith {_mType = "FULL SPECTRUM WARFARE";};
+	if (missType == 1) exitWith {_mType = "INFANTRY MISSION";};
+	if (missType == 2) exitWith {_mType = "COMBINED GROUND FORCES";};
+	if (missType == 3) exitWith {_mType = "FULL SPECTRUM WARFARE";};
 };
 
 if (progress < 3) //progress

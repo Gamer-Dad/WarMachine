@@ -66,7 +66,7 @@ call
 		];
 		if ((planes==1)||((planes==2)&&(plHW==plH1||plHW==plH2)&&(plHe==plH1||plHe==plH2))) then 
 		{
-			if (missType == 2) then 
+			if (missType == 3) then 
 			{
 				_flgs pushBack flgJetW;
 				_act pushBack ["Teleport at the Runway",{player setPos (flgJetW getRelPos [3,180]);},5,""];
@@ -102,7 +102,7 @@ call
 		];
 		if ((planes==1)||((planes==2)&&(plHW==plH1||plHW==plH2)&&(plHe==plH1||plHe==plH2))) then 
 		{
-			if (missType == 2) then 
+			if (missType == 3) then 
 			{
 				_flgs pushBack flgJetE;
 				_act pushBack ["Teleport at the Runway",{player setPos (flgJetE getRelPos [3,180]);},5,""];

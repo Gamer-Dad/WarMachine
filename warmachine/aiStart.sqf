@@ -77,7 +77,7 @@ if(AIon>4)then
 	//add vehicles
 	if(count _grpsW>0)then //1.group APC west
 	{
-		if(missType>0)then
+		if(missType>1)then
 		{
 			gArW=_grpsW select 0;
 			gArW addVehicle armW;			
@@ -85,7 +85,7 @@ if(AIon>4)then
 	};
 	if(count _grpsE>1)then //2.group APC east
 	{
-		if(missType>0)then
+		if(missType>1)then
 		{
 			gArE=_grpsE select 1;
 			gArE addVehicle armE;
@@ -105,7 +105,7 @@ if(AIon>4)then
 	//replace units
 	if(count _grpsW>0)then //1.group APC
 	{
-		if(missType>0)
+		if(missType>1)
 		then
 		{
 			{
@@ -148,7 +148,7 @@ if(AIon>4)then
 	};
 	if(count _grpsE>1)then //2.group APC
 	{
-		if(missType>0)
+		if(missType>1)
 		then
 		{
 			{
@@ -209,7 +209,7 @@ if(AIon>1)then
 	};
 	
 	//create vehicles at the sectors
-	if(missType>0)then
+	if(missType>1)then
 	{
 		call
 		{

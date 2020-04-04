@@ -42,7 +42,7 @@ for "_i" from 0 to 1 step 0 do
 		if(({alive _x} count (crew aiVehE))==0)exitWith{[2] spawn wrm_fnc_aiVehicle;};
 	};
 
-	if(missType==2)then
+	if(missType==3)then
 	{
 		call
 		{

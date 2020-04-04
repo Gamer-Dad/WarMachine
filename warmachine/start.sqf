@@ -701,7 +701,7 @@ flgBaseE = flgE createVehicle _fpos;
 
 if ((planes==1)||((planes==2)&&(plHW==plH1||plHW==plH2)&&(plHe==plH1||plHe==plH2))) then
 {
-	if (missType == 2) then 
+	if (missType == 3) then 
 	{
 		flgJetW = flgW createVehicle (plHW getRelPos [30, 270]);
 		flgJetE = flgE createVehicle (plHE getRelPos [30, 270]);
@@ -712,7 +712,7 @@ if ((planes==1)||((planes==2)&&(plHW==plH1||plHW==plH2)&&(plHe==plH1||plHe==plH2
 //PLANES
 if ((planes==1)||((planes==2)&&(plHW==plH1||plHW==plH2)&&(plHe==plH1||plHe==plH2))) then
 {	
-	if (missType == 2) then
+	if (missType == 3) then
 	{	
 		//plane west
 		_pSelW = selectRandom PlaneW;
@@ -774,7 +774,7 @@ if (count HeliTrW>0) then
 	deleteMarkerLocal "mbw";
 };
 //attack heli
-if (missType == 2) then
+if (missType == 3) then
 {
 	if (count HeliArW>0) then
 	{
@@ -827,7 +827,7 @@ if (count HeliTrE>0) then
 	deleteMarkerLocal "mbe";
 };
 //attack heli
-if (missType == 2) then
+if (missType == 3) then
 {
 	if (count HeliArE>0) then
 	{
@@ -943,10 +943,10 @@ _vehBaseTrE = [BikeE, CarE, CarArE, TruckE];
 } forEach _vehBaseTrE;
 
 //ARMORS
-if (missType>0) then
+if (missType>1) then
 {
 	//BASE armors
-	if(missType>1)then{ArmorW2=ArmorW2+aaW; ArmorE2=ArmorE2+aaE;};
+	if(missType>2)then{ArmorW2=ArmorW2+aaW; ArmorE2=ArmorE2+aaE;};
 	//APC west
 	_vSel = selectRandom ArmorW1;
 	_typ="";_tex="";
@@ -1311,7 +1311,7 @@ call
 		if (AIon==3||Aion==5)then
 		{
 			_n=3;
-			if(missType==2)then{_n=4;};
+			if(missType==3)then{_n=4;};
 			call
 			{
 				if(vehTime==0)exitWith{tic=tic+(60*_n);};

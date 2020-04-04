@@ -26,7 +26,7 @@ _grpsA= [];
 _grps= [];
 {if(count units _x>1)then{_grpsA pushBackUnique _x};} forEach allGroups;
 
-if(missType==2)then
+if(missType==3)then
 {
 	if(alive aiCasW)then{_grpsA=_grpsA+[(group driver aiCasW)];};
 	if(alive aiCasE)then{_grpsA=_grpsA+[(group driver aiCasE)];};	
@@ -124,7 +124,7 @@ if(progress<3)then
 			if (AIon>4&&aiDrive==0) then
 			{
 				if (_grp==gTrW||_grp==gTrE) then {[_grp,_sec] execVM "warmachine\aiDrive.sqf";};
-				if (missType>0) then
+				if (missType>1) then
 				{
 					if (_grp==gArW||_grp==gArE) then {[_grp,_sec] execVM "warmachine\aiDrive.sqf";};
 				};

@@ -96,11 +96,12 @@ aoType=0; //AO selection method
 minDis = 500; //500 zakladní délka
 
 missType=("asp1" call BIS_fnc_getParamValue); //Mission type
+if (missType == 0) then {missType = selectRandom [1,2,3]};
 call
 {
-	if (missType==0) exitWith {minDis = 500;}; 
-	if (missType==1) exitWith {minDis = 600;};
-	if (missType==2) exitWith {minDis = 700;}; 
+	if (missType==1) exitWith {minDis = 500;}; 
+	if (missType==2) exitWith {minDis = 600;};
+	if (missType==3) exitWith {minDis = 700;}; 
 };
 secNo=("asp2" call BIS_fnc_getParamValue); //Number of sectors
 support=("asp3" call BIS_fnc_getParamValue); //Combat support

@@ -57,7 +57,7 @@ call
 		if(coop==0 || coop==2) then
 		{
 			params [["_veh",[]]];
-			if(missType==0)then{_veh=CarArW;}else{_veh=CarArW+ArmorW1+ArmorW2;};
+			if(missType==1)then{_veh=CarArW;}else{_veh=CarArW+ArmorW1+ArmorW2;};
 
 			//west armed vehicle
 			_vSel = selectRandom _veh;
@@ -110,7 +110,7 @@ call
 		if(coop==0 || coop==1) then
 		{
 			params [["_veh",[]]];
-			if(missType==0)then{_veh=CarArE;}else{_veh=CarArE+ArmorE1+ArmorE2;};
+			if(missType==1)then{_veh=CarArE;}else{_veh=CarArE+ArmorE1+ArmorE2;};
 
 			//west armed vehicle
 			_vSel = selectRandom _veh;
